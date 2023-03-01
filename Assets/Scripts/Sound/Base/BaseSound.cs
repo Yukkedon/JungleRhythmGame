@@ -1,16 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class BaseSound : MonoBehaviour
 {
-    //BGM
-    [SerializeField] AudioSource audioSourceBGM;
-    [SerializeField] AudioClip[] audioClipsBGM;
 
+    AsyncOperationHandle sound;
+    //BGM
+    // Inspectorで設定
+    public AudioSource audioSourceBGM;
+    public List<AudioClip> audioClipsBGM;
     //SE
-    [SerializeField] AudioSource audioSourceSE;
-    [SerializeField] AudioClip[] audioClipsSE;
+    public AudioSource audioSourceSE;
+    public AudioClip[] audioClipsSE;
+
+    public void LoadMusic(string songName)
+    {
+        sound = Addressables.LoadAssetAsync<AudioClip>($"Assets/Resource/Musics/{songName}.wav");
+        audioSourceBGM.clip = (AudioClip)sound.Result;
+        //audioClipsBGM.Add((AudioClip)sound.Result);
+    }
 
     /// <summary>
     /// BGMの再生
@@ -18,9 +29,8 @@ public class BaseSound : MonoBehaviour
     public void PlayBGM(int num)
     {
         // 列挙型から流したいBGMを選ぶ（intでキャスト）
-        audioSourceBGM.clip = audioClipsBGM[(int)num];
+        //audioSourceBGM.clip = audioClipsBGM[num];
         audioSourceBGM.Play();
-
     }
 
     public void StopBgm()
@@ -37,10 +47,9 @@ public class BaseSound : MonoBehaviour
         audioSourceSE.PlayOneShot(audioClipsSE[num]);
     }
 
-
-
-    public void LoadMusic(string path)
+    private void Start()
     {
-
+        LoadMusic("Guren");
     }
+
 }
