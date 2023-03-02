@@ -8,7 +8,6 @@ public class SoundMain : BaseSound
     // Start is called before the first frame update
     void Start()
     {
-        
         LoadBGM(songName,true);
     }
 
