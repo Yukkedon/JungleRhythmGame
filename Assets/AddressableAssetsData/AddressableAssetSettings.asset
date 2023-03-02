@@ -38,6 +38,7 @@ MonoBehaviour:
   m_GroupAssets:
   - {fileID: 11400000, guid: 4a28ad9b35459e04592d99fd95dcd500, type: 2}
   - {fileID: 11400000, guid: a2ec36875b7a51a478531817d69eb3a3, type: 2}
+  - {fileID: 11400000, guid: 4bc0f1cfdeadb6747be1474ad7fa649f, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -79,6 +80,7 @@ MonoBehaviour:
   m_LabelTable:
     m_LabelNames:
     - default
+    - SelectMusic
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 30837accdac9f4f48904bb69d99a089f, type: 2}

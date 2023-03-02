@@ -1,55 +1,59 @@
-using System.Collections;
+Ôªøusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
+using static UnityEngine.Rendering.VirtualTexturing.Debugging;
 
 public class BaseSound : MonoBehaviour
 {
 
-    AsyncOperationHandle sound;
-    //BGM
-    // InspectorÇ≈ê›íË
-    public AudioSource audioSourceBGM;
-    public List<AudioClip> audioClipsBGM;
-    //SE
-    public AudioSource audioSourceSE;
-    public AudioClip[] audioClipsSE;
+    protected AsyncOperationHandle snd;
+    [SerializeField] AudioSource bgmSource;
+    [SerializeField] List<AudioClip> bgmClip;
 
-    public void LoadMusic(string songName)
+    [SerializeField] AudioSource seSuorce;
+    [SerializeField] List<AudioClip> seClip;
+
+    protected void LoadBGM(string songName, bool isAll = false)
     {
-        sound = Addressables.LoadAssetAsync<AudioClip>($"Assets/Resource/Musics/{songName}.wav");
-        audioSourceBGM.clip = (AudioClip)sound.Result;
-        //audioClipsBGM.Add((AudioClip)sound.Result);
+        // SelectÁîªÈù¢„ÅÆÈü≥Ê•Ω„Éá„Éº„Çø„Çí„É≠„Éº„Éâ„Åô„Çã„Åã„Åó„Å™„ÅÑ„Åã
+        if (isAll)
+        {
+            Addressables.LoadAssetsAsync<AudioClip>("SelectMusic", null).Completed += snd =>
+            {
+                 foreach (var clip in snd.Result)
+                 {
+                    bgmClip.Add((AudioClip)clip);
+                    Debug.Log(clip.name);
+                 }
+                Addressables.Release(snd);
+             };
+        }
+        if (!isAll)
+        {
+            snd = Addressables.LoadAssetAsync<AudioClip>($"Assets/Resource/Musics/{songName}.wav");
+            var soundLoad = snd.WaitForCompletion();
+            bgmClip.Add((AudioClip)snd.Result);
+            Addressables.Release(snd);
+        }
     }
 
-    /// <summary>
-    /// BGMÇÃçƒê∂
-    /// </summary>
-    public void PlayBGM(int num)
+    protected void PlayBGM(int num = 0)
     {
-        // óÒãìå^Ç©ÇÁó¨ÇµÇΩÇ¢BGMÇëIÇ‘ÅiintÇ≈ÉLÉÉÉXÉgÅj
-        //audioSourceBGM.clip = audioClipsBGM[num];
-        audioSourceBGM.Play();
+        bgmSource.clip = bgmClip[num];
+        bgmSource.Play();
     }
 
-    public void StopBgm()
+    protected void PlaySE(int num)
     {
-        audioSourceBGM.Stop();
+        seSuorce.PlayOneShot(seClip[num]);
     }
 
-    /// <summary>
-    /// SEÇÃçƒê∂
-    /// </summary>
-    /// <param name="se"></param>
-    public void PlaySE(int num)
+    protected void OnDestroy()
     {
-        audioSourceSE.PlayOneShot(audioClipsSE[num]);
-    }
-
-    private void Start()
-    {
-        LoadMusic("Guren");
+        if (snd.IsValid())
+            Addressables.Release(snd);
     }
 
 }

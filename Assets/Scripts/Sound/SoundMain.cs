@@ -4,22 +4,21 @@ using UnityEngine;
 
 public class SoundMain : BaseSound
 {
-
-
-
+    [SerializeField] string songName = "";
     // Start is called before the first frame update
     void Start()
     {
-        base.LoadMusic("GurennoYumiya");
+        
+        LoadBGM(songName,true);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            base.audioSourceBGM.Play();
+            PlayBGM();
         }
-        
+
     }
 }

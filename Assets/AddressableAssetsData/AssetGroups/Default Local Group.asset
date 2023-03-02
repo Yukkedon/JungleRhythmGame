@@ -16,7 +16,11 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 958ab894e35cdf54eae50b1be7574e42
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 484fdb1f683610c4fbb20044253f02f9
+    m_Address: Assets/Resource/Musics/GurennoYumiya.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: bcbcf2833f09f534bb8b663127410a9b, type: 2}
   m_SchemaSet:
