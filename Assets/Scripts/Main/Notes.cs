@@ -10,7 +10,15 @@ public class Notes : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space) && !isStart)
+        {
+            isStart = true;
+        }
+        else
+        {
+            transform.position -= transform.forward * Time.deltaTime * NoteSpeed;
+        }
         
-        transform.position -= transform.forward * Time.deltaTime * NoteSpeed;
+        
     }
 }
