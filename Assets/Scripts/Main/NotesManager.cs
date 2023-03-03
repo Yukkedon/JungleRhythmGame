@@ -54,6 +54,7 @@ public class NotesManager : MonoBehaviour
         Addressables.Release(json);
 
         noteNum = inputJson.notes.Length;
+        MainManager.instance.maxScore = noteNum * MainManager.instance.MAX_RAITO_POINT;
 
         for (int i = 0; i < inputJson.notes.Length; i++)
         {

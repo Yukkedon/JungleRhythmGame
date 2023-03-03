@@ -23,6 +23,11 @@ MonoBehaviour:
     m_SerializedLabels:
     - SelectCutMuisc
     - SelectMusic
+  - m_GUID: 808e94d71898702409b394e885c5dca6
+    m_Address: Assets/Resource/Musics/Manimani.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SelectMusic
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: bcbcf2833f09f534bb8b663127410a9b, type: 2}
   m_SchemaSet:

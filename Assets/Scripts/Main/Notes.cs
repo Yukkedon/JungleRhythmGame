@@ -14,7 +14,7 @@ public class Notes : MonoBehaviour
         {
             isStart = true;
         }
-        else
+        if (isStart)
         {
             transform.position -= transform.forward * Time.deltaTime * NoteSpeed;
         }
