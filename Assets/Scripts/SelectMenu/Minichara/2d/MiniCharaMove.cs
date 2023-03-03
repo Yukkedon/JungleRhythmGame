@@ -115,13 +115,15 @@ public class MiniCharaMove : MonoBehaviour
     }
 
     /// <summary>
-    /// doTweenアニメーション
+    /// doTweenアニメーション(Y軸のみ)
     /// DOTO:動きを変更する可能性あり
+    /// /// <param name="arrivalPositionY">到達位置</param>
+    /// <param name="duration">到達するまでの時間</param>
     /// </summary>
-    private void DoTweenAnimMiniChara(float minY, float maxY)
+    private void DoTweenAnimMiniChara(float arrivalPositionY, float duration)
     {
         // y軸のみのアニメーション
-        rectTransform.DOLocalMoveY(minY, maxY).
+        rectTransform.DOLocalMoveY(arrivalPositionY, duration).
             SetEase(Ease.OutBounce).SetLoops(-1, LoopType.Yoyo);
     }
 }
