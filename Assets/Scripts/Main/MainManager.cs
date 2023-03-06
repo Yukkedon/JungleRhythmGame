@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class MainManager : MonoBehaviour
 {
-    public static MainManager instance = null;
+    public static MainManager instance;
+
+    public string songName = "";
 
     public int MAX_RAITO_POINT = 5;
     public int MAX_DIGIT_POINT = 1000000;
@@ -14,6 +16,7 @@ public class MainManager : MonoBehaviour
 
 
     public bool isStart      = false;
+    public bool isEnd        = false;
     public float startTime   = 0;   // スタートボタンを押すまでの秒数を保存
     public float playerScore = 0;
     public float maxScore    = 0;
@@ -39,12 +42,6 @@ public class MainManager : MonoBehaviour
         }
     }
 
-    public void Start()
-    {
-        Debug.Log(instance.isStart);
-    }
-
-
     public void ResetCombo()
     {
         combo = 0;
@@ -52,6 +49,15 @@ public class MainManager : MonoBehaviour
     public void AddCombo()
     {
         combo++;
+    }
+    public int GetCombo()
+    {
+        return combo;
+    }
+
+    public int GetPoint()
+    {
+        return point;
     }
 
     
@@ -62,12 +68,15 @@ public class MainManager : MonoBehaviour
         {
             case 0:
                 perfect++;
+                point += 5;
                 break;
             case 1:
                 great++;
+                point += 3;
                 break;
             case 2:
                 bad++;
+                point += 1;
                 break;
             case 3:
                 miss++;

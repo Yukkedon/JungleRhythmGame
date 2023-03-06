@@ -22,7 +22,7 @@ public class HitJudge : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (MainManager.instance.isStart)
+        if (MainManager.instance.isStart && !MainManager.instance.isEnd)
         {
             if (Input.GetKeyDown(KeyCode.D))
             {
@@ -91,7 +91,12 @@ public class HitJudge : MonoBehaviour
                 MainManager.instance.AddJudgeCount(3);
             }
         }
-        
+
+    }
+
+    private void FixedUpdate()
+    {
+        UpdateText();
     }
 
     void CheckHitTiming(float timeLag,int offset)
@@ -117,7 +122,6 @@ public class HitJudge : MonoBehaviour
             MainManager.instance.ResetCombo();
             MainManager.instance.AddJudgeCount(2);
         }
-
     }
 
     void DeleteData(int offset)
@@ -126,7 +130,16 @@ public class HitJudge : MonoBehaviour
         notesManager.LaneNum.RemoveAt(0);
         notesManager.NoteType.RemoveAt(0);
 
-        MainManager.instance.point = PointConvert();
+        if (notesManager.NotesTime.Count <= 0)
+        {
+            MainManager.instance.isEnd = true;
+        }
+    }
+
+    void UpdateText()
+    {
+        comboText.text = "Combo\n"+MainManager.instance.GetCombo().ToString();
+        scoreText.text = "Score:" + MainManager.instance.GetPoint().ToString();
     }
 
     void PopupJudgeMsg(int judge)
@@ -134,8 +147,8 @@ public class HitJudge : MonoBehaviour
         Instantiate(JudgeMsgObj[judge], new Vector3(notesManager.LaneNum[0] - 1.5f, 0.76f, 0.15f), Quaternion.Euler(45, 0, 0));
     }
 
-    int PointConvert()
+    void AddPoint()
     {
-        return (int)Math.Round(1000000 * Math.Floor(MainManager.instance.playerScore / MainManager.instance.maxScore * 1000000) / 1000000);
+        MainManager.instance.point = (int)Math.Round(1000000 * Math.Floor(MainManager.instance.playerScore / MainManager.instance.maxScore * 1000000) / 1000000);
     }
 }

@@ -278,7 +278,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   noteNum: 0
-  songName: GurennoYumiya
   LaneNum: 
   NoteType: 
   NotesTime: []
@@ -369,10 +368,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4052a4cceb1b40547b8558ba5f3f310b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  songName: GurennoYumiya
   MAX_RAITO_POINT: 5
   MAX_DIGIT_POINT: 1000000
   PERFECT_POINT: 5
   isStart: 0
+  isEnd: 0
   startTime: 0
   playerScore: 0
   maxScore: 0
@@ -587,7 +588,6 @@ MonoBehaviour:
   bgmClip: []
   seSuorce: {fileID: 915999592}
   seClip: []
-  songName: GurennoYumiya
 --- !u!82 &915999592
 AudioSource:
   m_ObjectHideFlags: 0
