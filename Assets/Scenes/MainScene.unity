@@ -283,7 +283,7 @@ MonoBehaviour:
   NotesTime: []
   NotesObj: []
   NotesSpeed: 7
-  noteObj: {fileID: 5798729472960708805, guid: 6cdc4902d4a85a94a88a9b8f8a42b0ae, type: 3}
+  noteObj: {fileID: 6956675484662243556, guid: 71af1877905650a4483e4719c74f16a1, type: 3}
 --- !u!1 &505268852
 GameObject:
   m_ObjectHideFlags: 0
@@ -368,6 +368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4052a4cceb1b40547b8558ba5f3f310b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundMain: {fileID: 915999591}
   songName: GurennoYumiya
   MAX_RAITO_POINT: 5
   MAX_DIGIT_POINT: 1000000

@@ -2,10 +2,13 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainManager : MonoBehaviour
 {
     public static MainManager instance;
+
+    [SerializeField] SoundMain soundMain;
 
     public string songName = "";
 
@@ -39,6 +42,14 @@ public class MainManager : MonoBehaviour
         else
         {
             Destroy(this.gameObject);
+        }
+    }
+
+    public void Update()
+    {
+        if (soundMain.IsCheckEndBGM() && isStart && isEnd)
+        {
+            SceneManager.LoadScene("ResultScene");
         }
     }
 

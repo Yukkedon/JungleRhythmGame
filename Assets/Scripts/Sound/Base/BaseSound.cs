@@ -50,6 +50,15 @@ public class BaseSound : MonoBehaviour
         seSuorce.PlayOneShot(seClip[num]);
     }
 
+    public bool IsCheckEndBGM()
+    {
+        if (!bgmSource.isPlaying)
+        {
+            return true;
+        }
+        return false;
+    }
+
     protected void OnDestroy()
     {
         if (snd.IsValid())
