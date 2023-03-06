@@ -22,7 +22,7 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 412ab69e3d03e664ea0730a5906c99f0
-    m_Address: "Assets/Resource/Scores/\u7D05\u84EE\u306E\u5F13\u77E2.json"
+    m_Address: Assets/Resource/Scores/GurennoYumiya.json
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 8224141cb7eba4c46a598e54d07e95b4

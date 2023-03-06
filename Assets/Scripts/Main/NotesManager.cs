@@ -26,7 +26,6 @@ public class Note
 public class NotesManager : MonoBehaviour
 {
     public int noteNum;
-    [SerializeField] string songName;
 
     public List<int> LaneNum = new List<int>();
     public List<int> NoteType = new List<int>();
@@ -36,16 +35,16 @@ public class NotesManager : MonoBehaviour
     [SerializeField] float NotesSpeed;
     [SerializeField] GameObject noteObj;
 
-    void OnEnable()
+    void Start()
     {
         noteNum = 0;
-        Load(songName);
+        Load(MainManager.instance.songName);
     }
 
     private void Load(string SongName)
     {
         AsyncOperationHandle json;
-        json = Addressables.LoadAssetAsync<TextAsset>($"Assets/Resource/Scores/{songName}.json");
+        json = Addressables.LoadAssetAsync<TextAsset>($"Assets/Resource/Scores/{MainManager.instance.songName}.json");
         var scoreLoad = json.WaitForCompletion();
 
         string score = json.Result.ToString();
