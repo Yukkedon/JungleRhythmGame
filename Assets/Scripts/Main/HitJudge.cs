@@ -141,9 +141,9 @@ public class HitJudge : MonoBehaviour
         comboText.text = "Combo\n"+MainManager.instance.GetCombo().ToString();
         scoreText.text = "Score:" + MainManager.instance.GetPoint().ToString();
     }
-
     void PopupJudgeMsg(int judge)
     {
+        // Instanceの削除処理はオブジェクトに記述
         Instantiate(JudgeMsgObj[judge], new Vector3(notesManager.LaneNum[0] - 1.5f, 0.76f, 0.15f), Quaternion.Euler(45, 0, 0));
     }
 
