@@ -15,6 +15,8 @@ public class SelectManager : MonoBehaviour
     [SerializeField] Button nobutton;
     [SerializeField] Button closebutton;
 
+    [SerializeField] GameObject panel;
+
     /// <summary>
     /// 開始処理
     /// 1回しか呼ばないためAwake
@@ -28,6 +30,8 @@ public class SelectManager : MonoBehaviour
         nobutton.onClick.AddListener(OnClickCloseButton);
         closebutton.onClick.AddListener(OnClickCloseButton);
         yesbutton.onClick.AddListener(OnClickYesButton);
+        // パネルを非表示
+        panel.SetActive(false);
     }
 
     /// <summary>
@@ -35,6 +39,7 @@ public class SelectManager : MonoBehaviour
     /// </summary>
     private void OnClickCloseButton()
     {
+        panel.SetActive(false);
         // オプションウィンドウをだんだん小さく
         buttonPanel.transform.DOScale(Vector3.zero, 0.2f);
 
@@ -51,6 +56,8 @@ public class SelectManager : MonoBehaviour
     /// </summary>
     public void OnClickSelectMusic()
     {
+        panel.SetActive(true);
+
         // ボタンパネルを表示
         buttonPanel.gameObject.SetActive(true);
 

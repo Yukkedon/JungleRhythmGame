@@ -9,11 +9,42 @@ public class SelectUiAnimatioin : MonoBehaviour
     // アニメーションさせるテキスト
     [SerializeField] TextMeshProUGUI gorillaDialogue = default;
 
+    // 背景オブジェクト
+    [SerializeField] private GameObject backGround1;
+    [SerializeField] private GameObject backGround2;
+    
+    // テキストパネル
+    [SerializeField] private GameObject textPanel;
+    
+    // ミニキャラ
+    [SerializeField] private GameObject[] miniChara;
+    
+    // ここは変更予定
+    [SerializeField] private GameObject SelectButton;
+    
+    /// <summary>
+    /// Awake処理（ここでは初期値を入れている）
+    /// </summary>
+    private void Awake()
+    {
+        // 各オブジェクトの初期値設定
+        backGround1.transform.localScale = new Vector3(2f, 2f, 2f);
+        backGround2.transform.localScale = new Vector3(3.5f, 3.5f, 3.5f);
+        textPanel.transform.localPosition = new Vector3(0f, 300f, 0f);
+        for (int i = 0; i < miniChara.Length; i++)
+        {
+            miniChara[i].transform.localScale = Vector3.zero;
+        }
+        // セレクトボタンは非表示
+        SelectButton.SetActive(false);
+    }
+
     /// <summary>
     /// 開始処理
     /// </summary>
     void Start()
     {
+        StartCoroutine(AnimStart());
         TextDOTweenAnim();
     }
 
@@ -49,5 +80,30 @@ public class SelectUiAnimatioin : MonoBehaviour
               .SetDelay(0.3f * i)
             );
         }
+    }
+
+    /// <summary>
+    /// UIのアニメーション設定(Dotweenとコルーチン)
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator AnimStart()
+    {
+        // 背景（だんだん縮小）
+        backGround1.transform.DOScale(new Vector3(1, 1, 1), 1f).SetEase(Ease.OutBounce);
+        yield return new WaitForSeconds(1f);
+        backGround2.transform.DOScale(new Vector3(1, 1, 1), 1f).SetEase(Ease.OutBounce);
+        yield return new WaitForSeconds(1f);
+        
+        // テキストパネル（上から落ちてくる）
+        textPanel.transform.DOLocalMoveY(-151f, 2.5f).SetEase(Ease.OutBounce);
+        
+        // ミニキャラ（だんだん拡大）
+        for (int i = 0; i < miniChara.Length; i++)
+        {
+            miniChara[i].transform.DOScale(new Vector3(1, 1, 1), 1f).SetEase(Ease.OutBounce);
+        }
+        yield return new WaitForSeconds(2f);
+        SelectButton.SetActive(true);
+
     }
 }
