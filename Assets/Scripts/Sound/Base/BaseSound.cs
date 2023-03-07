@@ -39,13 +39,13 @@ public class BaseSound : MonoBehaviour
         }
     }
 
-    protected void PlayBGM(int num = 0)
+    public void PlayBGM(int num = 0)
     {
         bgmSource.clip = bgmClip[num];
         bgmSource.Play();
     }
 
-    protected void PlaySE(int num)
+    public void PlaySE(int num)
     {
         seSuorce.PlayOneShot(seClip[num]);
     }
@@ -59,7 +59,7 @@ public class BaseSound : MonoBehaviour
         return false;
     }
 
-    protected void OnDestroy()
+    public void OnDestroy()
     {
         if (snd.IsValid())
             Addressables.Release(snd);

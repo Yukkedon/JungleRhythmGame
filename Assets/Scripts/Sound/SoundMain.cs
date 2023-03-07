@@ -5,6 +5,11 @@ using UnityEngine;
 public class SoundMain : BaseSound
 {
 
+    public enum SE
+    {
+        Touch,
+    }
+
     // Start is called before the first frame update
     void Start()
     {
