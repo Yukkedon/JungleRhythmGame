@@ -9,6 +9,7 @@ public class HitJudge : MonoBehaviour
 {
     [SerializeField] GameObject[] JudgeMsgObj;
     [SerializeField] NotesManager notesManager;
+    [SerializeField] SoundMain    soundMain;
 
     [SerializeField] TextMeshProUGUI comboText;
     [SerializeField] TextMeshProUGUI scoreText;
@@ -37,6 +38,7 @@ public class HitJudge : MonoBehaviour
                         CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NotesTime[0] + MainManager.instance.startTime)),1);
                     }
                 }
+                soundMain.PlaySE((int)SoundMain.SE.Touch);
             }
             if (Input.GetKeyDown(KeyCode.F))
             {
@@ -51,6 +53,7 @@ public class HitJudge : MonoBehaviour
                         CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NotesTime[0] + MainManager.instance.startTime)), 1);
                     }
                 }
+                soundMain.PlaySE((int)SoundMain.SE.Touch);
             }
             if (Input.GetKeyDown(KeyCode.J))
             {
@@ -65,6 +68,7 @@ public class HitJudge : MonoBehaviour
                         CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NotesTime[0] + MainManager.instance.startTime)), 1);
                     }
                 }
+                soundMain.PlaySE((int)SoundMain.SE.Touch);
             }
             if (Input.GetKeyDown(KeyCode.K))
             {
@@ -80,6 +84,7 @@ public class HitJudge : MonoBehaviour
                         CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NotesTime[0] + MainManager.instance.startTime)), 1);
                     }
                 }
+                soundMain.PlaySE((int)SoundMain.SE.Touch);
             }
 
             // ƒ~ƒX”»’è
