@@ -63,6 +63,8 @@ public class BaseSound : MonoBehaviour
     {
         if (snd.IsValid())
             Addressables.Release(snd);
+/*        if (this != null)
+            Destroy(this);*/
     }
 
 }
