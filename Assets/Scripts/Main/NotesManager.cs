@@ -75,12 +75,9 @@ public class NotesManager : MonoBehaviour
 
         JsonData jsonData = JsonMapper.ToObject(score.ToString());
 
-        Debug.Log(jsonData["notes"][22]["notes"][0]["type"]);
-
         Addressables.Release(json);
 
         noteNum = inputJson.notes.Count;
-        MainManager.instance.maxScore = noteNum * MainManager.instance.MAX_RAITO_POINT;
 
         for (int i = 0; i < inputJson.notes.Count; i++)
         {
@@ -91,13 +88,43 @@ public class NotesManager : MonoBehaviour
             LaneNum.Add(inputJson.notes[i].block);
             NoteType.Add(inputJson.notes[i].type);
 
-            if (jsonData["notes"][i]["notes"] != null && jsonData["notes"][i]["notes"].Count != 0)
-            {
-                Debug.Log("long notes‚¾‚æ" + i);
-            }
-
             float z = NotesTime[i] * NotesSpeed;
             NotesObj.Add(Instantiate(noteObj, new Vector3(inputJson.notes[i].block - 1.5f, 0.55f, z), Quaternion.identity));
+
+            // ƒƒ“ƒOƒm[ƒcì¬
+            if (jsonData["notes"][i]["type"].Equals("2"))
+            {
+                for(int j = 0; j < jsonData["notes"][i]["notes"].Count; j++){
+                    var LPB      = jsonData["notes"][i]["notes"][j]["LPB"];
+                    var NUM      = jsonData["notes"][i]["notes"][j]["num"];
+                    var BLOCK    = jsonData["notes"][i]["notes"][j]["block"];
+                    var TYPE     = jsonData["notes"][i]["notes"][j]["type"];
+                    Debug.Log(NUM);
+                    Debug.Log(BLOCK);
+                    Debug.Log(TYPE);
+
+                    kankaku = (int)LPB;
+                    kankaku = 60 / (inputJson.BPM * kankaku);
+                    
+                    beatSec = (int)LPB;
+                    beatSec = kankaku * beatSec;
+
+                    time = (int)NUM / (int)LPB;
+                    time = (beatSec * time + inputJson.offset * 0.01f);
+                    NotesTime.Add(time);
+                    LaneNum.Add((int)BLOCK);
+                    NoteType.Add((int)TYPE);
+
+                    z = NotesTime[i+j] * NotesSpeed;
+
+                    noteNum++;
+                    
+                    NotesObj.Add(Instantiate(noteObj, new Vector3((int)BLOCK - 1.5f, 0.55f, z), Quaternion.identity));
+                }
+                
+            }
         }
+
+        MainManager.instance.maxScore = noteNum * MainManager.instance.MAX_RAITO_POINT;
     }
 }
