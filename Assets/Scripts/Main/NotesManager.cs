@@ -95,6 +95,8 @@ public class NotesManager : MonoBehaviour
             if (jsonData["notes"][i]["type"].Equals("2"))
             {
                 for(int j = 0; j < jsonData["notes"][i]["notes"].Count; j++){
+                    // JsonDataクラスで(flaot)(int)キャストするとエラーになるため
+                    // 一時的に保存する変数を作成
                     var LPB      = jsonData["notes"][i]["notes"][j]["LPB"];
                     var NUM      = jsonData["notes"][i]["notes"][j]["num"];
                     var BLOCK    = jsonData["notes"][i]["notes"][j]["block"];

@@ -52,7 +52,6 @@ public class BaseSound : MonoBehaviour
 
     public bool IsCheckEndBGM()
     {
-        if (bgmSource != null) return true;
         if (!bgmSource.isPlaying)
         {
             return true;
