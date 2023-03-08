@@ -6,28 +6,32 @@ using TMPro;
 
 public class SelectUiAnimatioin : MonoBehaviour
 {
-    // ƒAƒjƒ[ƒVƒ‡ƒ“‚³‚¹‚éƒeƒLƒXƒg
+    // ï¿½Aï¿½jï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½eï¿½Lï¿½Xï¿½g
     [SerializeField] TextMeshProUGUI gorillaDialogue = default;
 
-    // ”wŒiƒIƒuƒWƒFƒNƒg
+    // ï¿½wï¿½iï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½g
     [SerializeField] private GameObject backGround1;
     [SerializeField] private GameObject backGround2;
     
-    // ƒeƒLƒXƒgƒpƒlƒ‹
+    // ï¿½eï¿½Lï¿½Xï¿½gï¿½pï¿½lï¿½ï¿½
     [SerializeField] private GameObject textPanel;
     
-    // ƒ~ƒjƒLƒƒƒ‰
+    // ï¿½~ï¿½jï¿½Lï¿½ï¿½ï¿½ï¿½
     [SerializeField] private GameObject[] miniChara;
     
-    // ‚±‚±‚Í•ÏX—\’è
+    // ï¿½ï¿½ï¿½ï¿½ï¿½Í•ÏXï¿½\ï¿½ï¿½
     [SerializeField] private GameObject SelectButton;
+
+    [SerializeField] private GameObject fade = default;
     
     /// <summary>
-    /// Awakeˆ—i‚±‚±‚Å‚Í‰Šú’l‚ğ“ü‚ê‚Ä‚¢‚éj
+    /// Awakeï¿½ï¿½ï¿½ï¿½ï¿½iï¿½ï¿½ï¿½ï¿½ï¿½Å‚Íï¿½ï¿½ï¿½ï¿½lï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½j
     /// </summary>
     private void Awake()
     {
-        // ŠeƒIƒuƒWƒFƒNƒg‚Ì‰Šú’lİ’è
+        fade = GameObject.Find("FadeCanvas");
+        
+        // ï¿½eï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½Ìï¿½ï¿½ï¿½ï¿½lï¿½İ’ï¿½
         backGround1.transform.localScale = new Vector3(2f, 2f, 2f);
         backGround2.transform.localScale = new Vector3(3.5f, 3.5f, 3.5f);
         textPanel.transform.localPosition = new Vector3(0f, 300f, 0f);
@@ -35,69 +39,74 @@ public class SelectUiAnimatioin : MonoBehaviour
         {
             miniChara[i].transform.localScale = Vector3.zero;
         }
-        // ƒZƒŒƒNƒgƒ{ƒ^ƒ“‚Í”ñ•\¦
+        // ï¿½Zï¿½ï¿½ï¿½Nï¿½gï¿½{ï¿½^ï¿½ï¿½ï¿½Í”ï¿½\ï¿½ï¿½
         SelectButton.SetActive(false);
     }
 
     /// <summary>
-    /// ŠJnˆ—
+    /// ï¿½Jï¿½nï¿½ï¿½ï¿½ï¿½
     /// </summary>
     void Start()
+    {
+        fade.GetComponent<Fade>().FadeOut(1f, () => SelectAnimStart());
+    }
+
+    void SelectAnimStart()
     {
         StartCoroutine(AnimStart());
         TextDOTweenAnim();
     }
 
     /// <summary>
-    /// UIƒAƒjƒ[ƒVƒ‡ƒ“ˆ—
+    /// UIï¿½Aï¿½jï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     /// </summary>
     private void TextDOTweenAnim()
     {
-        //DOTweenTMPAnimator‚ğì¬
+        //DOTweenTMPAnimatorï¿½ï¿½ï¿½ì¬
         DOTweenTMPAnimator animator = new DOTweenTMPAnimator(gorillaDialogue);
 
-        //1•¶š‚¸‚ÂƒAƒjƒ[ƒVƒ‡ƒ“‚ğİ’è(i‚ª‰½”Ô–Ú‚Ì•¶š‚©‚ÌƒCƒ“ƒfƒbƒNƒX)
-        //Sequence‚Å‘S•¶š‚ÌƒAƒjƒ[ƒVƒ‡ƒ“‚ğ‚Ü‚Æ‚ß‚é
+        //1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÂƒAï¿½jï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ’ï¿½(iï¿½ï¿½ï¿½ï¿½ï¿½Ô–Ú‚Ì•ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÌƒCï¿½ï¿½ï¿½fï¿½bï¿½Nï¿½X)
+        //Sequenceï¿½Å‘Sï¿½ï¿½ï¿½ï¿½ï¿½ÌƒAï¿½jï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü‚Æ‚ß‚ï¿½
         var sequence = DOTween.Sequence();
 
-        sequence.SetLoops(-1);//–³ŒÀƒ‹[ƒvİ’è
+        sequence.SetLoops(-1);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½vï¿½İ’ï¿½
 
 
-        //ˆê•¶š‚¸‚Â‚ÉƒAƒjƒ[ƒVƒ‡ƒ“İ’è
-        var duration = 0.2f;//1‰ñ•Ó‚è‚ÌTweenŠÔ
+        //ï¿½ê•¶ï¿½ï¿½ï¿½ï¿½ï¿½Â‚ÉƒAï¿½jï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½İ’ï¿½
+        var duration = 0.2f;//1ï¿½ï¿½Ó‚ï¿½ï¿½Tweenï¿½ï¿½ï¿½ï¿½
         for (int i = 0; i < animator.textInfo.characterCount; ++i)
         {
             sequence.Join(DOTween.Sequence()
-              //ã‚ÉˆÚ“®‚µ‚Ä–ß‚é
+              //ï¿½ï¿½ÉˆÚ“ï¿½ï¿½ï¿½ï¿½Ä–ß‚ï¿½
               .Append(animator.DOOffsetChar(i, animator.GetCharOffset(i) + new Vector3(0, 10, 0), duration).SetEase(Ease.OutFlash, 2))
-              //“¯‚É1.2”{‚ÉŠg‘å‚µ‚Ä–ß‚é
+              //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½1.2ï¿½{ï¿½ÉŠgï¿½å‚µï¿½Ä–ß‚ï¿½
               .Join(animator.DOScaleChar(i, 1.2f, duration).SetEase(Ease.OutFlash, 2))
-              //“¯‚ÉF‚ğ‰©F‚É‚µ‚Ä–ß‚·
+              //ï¿½ï¿½ï¿½ï¿½ï¿½ÉFï¿½ï¿½ï¿½ï¿½ï¿½Fï¿½É‚ï¿½ï¿½Ä–ß‚ï¿½
               .Join(animator.DOColorChar(i, Color.gray, duration * 0.5f).SetLoops(2, LoopType.Yoyo))
-              //ƒAƒjƒ[ƒVƒ‡ƒ“ŒãA1•b‚ÌƒCƒ“ƒ^[ƒoƒ‹İ’è
+              //ï¿½Aï¿½jï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½A1ï¿½bï¿½ÌƒCï¿½ï¿½ï¿½^ï¿½[ï¿½oï¿½ï¿½ï¿½İ’ï¿½
               .AppendInterval(2f)
-              //ŠJn‚Í0.15•b‚¸‚Â‚¸‚ç‚·
+              //ï¿½Jï¿½nï¿½ï¿½0.15ï¿½bï¿½ï¿½ï¿½Â‚ï¿½ï¿½ç‚·
               .SetDelay(0.3f * i)
             );
         }
     }
 
     /// <summary>
-    /// UI‚ÌƒAƒjƒ[ƒVƒ‡ƒ“İ’è(Dotween‚ÆƒRƒ‹[ƒ`ƒ“)
+    /// UIï¿½ÌƒAï¿½jï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½İ’ï¿½(Dotweenï¿½ÆƒRï¿½ï¿½ï¿½[ï¿½`ï¿½ï¿½)
     /// </summary>
     /// <returns></returns>
     IEnumerator AnimStart()
     {
-        // ”wŒii‚¾‚ñ‚¾‚ñk¬j
+        // ï¿½wï¿½iï¿½iï¿½ï¿½ï¿½ñ‚¾‚ï¿½kï¿½ï¿½ï¿½j
         backGround1.transform.DOScale(new Vector3(1, 1, 1), 1f).SetEase(Ease.OutBounce);
         yield return new WaitForSeconds(1f);
         backGround2.transform.DOScale(new Vector3(1, 1, 1), 1f).SetEase(Ease.OutBounce);
         yield return new WaitForSeconds(1f);
         
-        // ƒeƒLƒXƒgƒpƒlƒ‹iã‚©‚ç—‚¿‚Ä‚­‚éj
+        // ï¿½eï¿½Lï¿½Xï¿½gï¿½pï¿½lï¿½ï¿½ï¿½iï¿½ã‚©ï¿½ç—ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½j
         textPanel.transform.DOLocalMoveY(-151f, 2.5f).SetEase(Ease.OutBounce);
         
-        // ƒ~ƒjƒLƒƒƒ‰i‚¾‚ñ‚¾‚ñŠg‘åj
+        // ï¿½~ï¿½jï¿½Lï¿½ï¿½ï¿½ï¿½ï¿½iï¿½ï¿½ï¿½ñ‚¾‚ï¿½gï¿½ï¿½j
         for (int i = 0; i < miniChara.Length; i++)
         {
             miniChara[i].transform.DOScale(new Vector3(1, 1, 1), 1f).SetEase(Ease.OutBounce);

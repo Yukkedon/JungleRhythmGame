@@ -32,6 +32,8 @@ public class FadeImage : UnityEngine.UI.Graphic , IFade
 	[SerializeField, Range (0, 1)]
 	private float cutoutRange;
 
+	public static FadeImage instance;
+
 	public float Range {
 		get {
 			return cutoutRange;
@@ -41,6 +43,19 @@ public class FadeImage : UnityEngine.UI.Graphic , IFade
 			UpdateMaskCutout (cutoutRange);
 		}
 	}
+
+	private void Awake()
+	{
+    	if( instance == null)
+    	{
+      		instance = this;
+      		DontDestroyOnLoad(gameObject);
+    	}
+    	else
+    	{
+      		Destroy(gameObject);
+    	}
+  	}
 
 	protected override void Start ()
 	{
