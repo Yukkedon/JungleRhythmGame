@@ -52,6 +52,7 @@ public class BaseSound : MonoBehaviour
 
     public bool IsCheckEndBGM()
     {
+        if (bgmSource != null) return true;
         if (!bgmSource.isPlaying)
         {
             return true;
@@ -63,6 +64,8 @@ public class BaseSound : MonoBehaviour
     {
         if (snd.IsValid())
             Addressables.Release(snd);
+/*        if (this != null)
+            Destroy(this);*/
     }
 
 }

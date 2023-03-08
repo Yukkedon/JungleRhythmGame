@@ -16,7 +16,7 @@ public class Data
     public int maxBlock;
     public int BPM;
     public int offset;
-    public NoteData[] notes;
+    public List<NoteData> notes;
 }
 
 [Serializable]
@@ -26,7 +26,7 @@ public class NoteData
     public int num;
     public int block;
     public int LPB;
-    public LongNoteData[] longNotes;
+    public List<LongNoteData> longNotes;
 }
 
 [Serializable]
@@ -70,17 +70,19 @@ public class NotesManager : MonoBehaviour
         json = Addressables.LoadAssetAsync<TextAsset>($"Assets/Resource/Scores/{MainManager.instance.songName}.json");
         var scoreLoad = json.WaitForCompletion();
 
-        string score = json.Result.ToString();
-        Data inputJson = JsonUtility.FromJson<Data>(score);
+        TextAsset score = json.Result as TextAsset;
+        Data inputJson = JsonMapper.ToObject<Data>(score.text);  // LitJson
 
-        Debug.Log(inputJson.notes[inputJson.notes.Length - 1].longNotes);
+        JsonData jsonData = JsonMapper.ToObject(score.ToString());
+
+        Debug.Log(jsonData["notes"][22]["notes"][0]["type"]);
 
         Addressables.Release(json);
 
-        noteNum = inputJson.notes.Length;
+        noteNum = inputJson.notes.Count;
         MainManager.instance.maxScore = noteNum * MainManager.instance.MAX_RAITO_POINT;
 
-        for (int i = 0; i < inputJson.notes.Length; i++)
+        for (int i = 0; i < inputJson.notes.Count; i++)
         {
             float kankaku = 60 / (inputJson.BPM * (float)inputJson.notes[i].LPB);
             float beatSec = kankaku * (float)inputJson.notes[i].LPB;
@@ -89,7 +91,10 @@ public class NotesManager : MonoBehaviour
             LaneNum.Add(inputJson.notes[i].block);
             NoteType.Add(inputJson.notes[i].type);
 
-            //Debug.Log(inputJson.notes[i].longNotes);
+            if (jsonData["notes"][i]["notes"] != null && jsonData["notes"][i]["notes"].Count != 0)
+            {
+                Debug.Log("long notes‚¾‚æ" + i);
+            }
 
             float z = NotesTime[i] * NotesSpeed;
             NotesObj.Add(Instantiate(noteObj, new Vector3(inputJson.notes[i].block - 1.5f, 0.55f, z), Quaternion.identity));

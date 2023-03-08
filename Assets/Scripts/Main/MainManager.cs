@@ -47,6 +47,7 @@ public class MainManager : MonoBehaviour
 
     public void Update()
     {
+        if (soundMain == null) return;
         if (soundMain.IsCheckEndBGM() && isStart && isEnd)
         {
             SceneManager.LoadScene("ResultScene");
