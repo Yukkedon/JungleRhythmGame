@@ -1,8 +1,13 @@
 using System;
 using System.Collections.Generic;
+using Unity.Collections;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
+
+using LitJson;
+
 
 [Serializable]
 public class Data
@@ -11,16 +16,33 @@ public class Data
     public int maxBlock;
     public int BPM;
     public int offset;
-    public Note[] notes;
-
+    public NoteData[] notes;
 }
+
 [Serializable]
-public class Note
+public class NoteData
 {
     public int type;
     public int num;
     public int block;
     public int LPB;
+    public LongNoteData[] longNotes;
+}
+
+[Serializable]
+public class LongNoteData
+{
+    public int type;
+    public int num;
+    public int block;
+    public int LPB;
+}
+
+enum NotesType
+{
+    None,
+    NormalNotes,
+    LongNotes
 }
 
 public class NotesManager : MonoBehaviour
@@ -39,6 +61,7 @@ public class NotesManager : MonoBehaviour
     {
         noteNum = 0;
         Load(MainManager.instance.songName);
+
     }
 
     private void Load(string SongName)
@@ -49,6 +72,8 @@ public class NotesManager : MonoBehaviour
 
         string score = json.Result.ToString();
         Data inputJson = JsonUtility.FromJson<Data>(score);
+
+        Debug.Log(inputJson.notes[inputJson.notes.Length - 1].longNotes);
 
         Addressables.Release(json);
 
@@ -63,6 +88,8 @@ public class NotesManager : MonoBehaviour
             NotesTime.Add(time);
             LaneNum.Add(inputJson.notes[i].block);
             NoteType.Add(inputJson.notes[i].type);
+
+            //Debug.Log(inputJson.notes[i].longNotes);
 
             float z = NotesTime[i] * NotesSpeed;
             NotesObj.Add(Instantiate(noteObj, new Vector3(inputJson.notes[i].block - 1.5f, 0.55f, z), Quaternion.identity));
