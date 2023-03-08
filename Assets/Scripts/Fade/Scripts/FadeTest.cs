@@ -28,7 +28,7 @@ public class FadeTest : MonoBehaviour
         }
     }
 
-    public void OnClickSelectButton(string name)
+    public void ChangeSceneButton(string name)
     {
         fade.FadeIn( 1f, () => SceneManager.LoadScene(name));
     }

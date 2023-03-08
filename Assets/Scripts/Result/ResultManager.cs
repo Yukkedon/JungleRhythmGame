@@ -5,12 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class ResultManager : MonoBehaviour
 {
-    public void OnRetryButton()
+    [SerializeField]Fade fade;
+    public void ChangeSceneButton(string name)
     {
-        SceneManager.LoadScene("MainScene");
-    }
-    public void OnSelectButton()
-    {
-        SceneManager.LoadScene("SelectScene");
+        fade.FadeIn( 1f, () => SceneManager.LoadScene(name));
     }
 }

@@ -7,43 +7,46 @@ using DG.Tweening;
 
 public class SelectManager : MonoBehaviour
 {
-    // ‘JˆÚƒ{ƒ^ƒ“
+    // ï¿½Jï¿½Úƒ{ï¿½^ï¿½ï¿½
     [SerializeField] private GameObject buttonPanel;
 
-    // ƒ{ƒ^ƒ“Ši”[•Ï”
+    // ï¿½{ï¿½^ï¿½ï¿½ï¿½iï¿½[ï¿½Ïï¿½
     [SerializeField] Button yesbutton;
     [SerializeField] Button nobutton;
     [SerializeField] Button closebutton;
 
     [SerializeField] GameObject panel;
+    [SerializeField] GameObject fade;
 
     /// <summary>
-    /// ŠJnˆ—
-    /// 1‰ñ‚µ‚©ŒÄ‚Î‚È‚¢‚½‚ßAwake
+    /// ï¿½Jï¿½nï¿½ï¿½ï¿½ï¿½
+    /// 1ï¿½ñ‚µ‚ï¿½ï¿½Ä‚Î‚È‚ï¿½ï¿½ï¿½ï¿½ï¿½Awake
     /// </summary>
     private void Awake()
     {
-        // ƒpƒlƒ‹‚Ì‰ŠúƒXƒP[ƒ‹‚Ìİ’è
+        // ï¿½pï¿½lï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½Xï¿½Pï¿½[ï¿½ï¿½ï¿½Ìİ’ï¿½
         buttonPanel.transform.localScale = Vector3.zero;
 
-        // Šeƒ{ƒ^ƒ“‚ÉƒAƒNƒVƒ‡ƒ“‚ğŠi”[
+        // ï¿½eï¿½{ï¿½^ï¿½ï¿½ï¿½ÉƒAï¿½Nï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½iï¿½[
         nobutton.onClick.AddListener(OnClickCloseButton);
         closebutton.onClick.AddListener(OnClickCloseButton);
         yesbutton.onClick.AddListener(OnClickYesButton);
-        // ƒpƒlƒ‹‚ğ”ñ•\¦
+        // ï¿½pï¿½lï¿½ï¿½ï¿½ï¿½ï¿½\ï¿½ï¿½
         panel.SetActive(false);
+
+        fade = GameObject.Find("FadeCanvas");
     }
 
     /// <summary>
-    /// ‚¢‚¢‚¦A‚à‚µ‚­‚ÍXƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚½‚Ìˆ—
+    /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Xï¿½{ï¿½^ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½
     /// </summary>
     private void OnClickCloseButton()
     {
         panel.SetActive(false);
-        // ƒIƒvƒVƒ‡ƒ“ƒEƒBƒ“ƒhƒE‚ğ‚¾‚ñ‚¾‚ñ¬‚³‚­
+        // ï¿½Iï¿½vï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½Eï¿½Bï¿½ï¿½ï¿½hï¿½Eï¿½ï¿½ï¿½ï¿½ï¿½ñ‚¾‚ñ¬‚ï¿½ï¿½ï¿½
         buttonPanel.transform.DOScale(Vector3.zero, 0.2f);
 
-        // ƒXƒP[ƒ‹‚ª0‚É‚È‚Á‚½‚ç”ñ•\¦‚É‚·‚é
+        // ï¿½Xï¿½Pï¿½[ï¿½ï¿½ï¿½ï¿½0ï¿½É‚È‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\ï¿½ï¿½ï¿½É‚ï¿½ï¿½ï¿½
         if(buttonPanel.transform.localScale== Vector3.zero)
         {
             buttonPanel.gameObject.SetActive(false);
@@ -51,29 +54,28 @@ public class SelectManager : MonoBehaviour
     }
 
     /// <summary>
-    /// ‹È‚ğ‘I‘ğ‚µ‚½‚Æ‚«
-    /// TODO:•Êˆ—‚É‚·‚é‰Â”\«
+    /// ï¿½È‚ï¿½Iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ‚ï¿½
+    /// TODO:ï¿½Êï¿½ï¿½ï¿½ï¿½É‚ï¿½ï¿½ï¿½Â”\ï¿½ï¿½
     /// </summary>
     public void OnClickSelectMusic()
     {
         panel.SetActive(true);
 
-        // ƒ{ƒ^ƒ“ƒpƒlƒ‹‚ğ•\¦
+        // ï¿½{ï¿½^ï¿½ï¿½ï¿½pï¿½lï¿½ï¿½ï¿½ï¿½\ï¿½ï¿½
         buttonPanel.gameObject.SetActive(true);
 
-        // ƒIƒvƒVƒ‡ƒ“ƒEƒBƒ“ƒhƒE‚ğ‚¾‚ñ‚¾‚ñŠg‘å
+        // ï¿½Iï¿½vï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½Eï¿½Bï¿½ï¿½ï¿½hï¿½Eï¿½ï¿½ï¿½ï¿½ï¿½ñ‚¾‚ï¿½gï¿½ï¿½
         buttonPanel.transform.DOScale(new Vector3(1, 1, 1), 0.2f);
     }
 
     /// <summary>
-    /// u‚Í‚¢v‚Ìƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚½‚Æ‚«
+    /// ï¿½uï¿½Í‚ï¿½ï¿½vï¿½Ìƒ{ï¿½^ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ‚ï¿½
     /// </summary>
     private void OnClickYesButton()
     {
-        // ƒtƒF[ƒhˆ—
-        // ‚±‚±‚É‘‚­
-
-        SceneManager.LoadScene("MainScene");
+        // ï¿½tï¿½Fï¿½[ï¿½hï¿½ï¿½ï¿½ï¿½
+        // ï¿½ï¿½ï¿½ï¿½ï¿½Éï¿½ï¿½ï¿½
+        fade.GetComponent<Fade>().FadeIn(1f, () =>SceneManager.LoadScene("MainScene"));
 
     }
 
