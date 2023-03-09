@@ -22,14 +22,14 @@ public class SelectUiAnimatioin : MonoBehaviour
     // �����͕ύX�\��
     [SerializeField] private GameObject SelectButton;
 
-    [SerializeField] private GameObject fade = default;
+    //[SerializeField] private GameObject fade = default;
     
     /// <summary>
     /// Awake�����i�����ł͏����l�����Ă���j
     /// </summary>
     private void Awake()
     {
-        fade = GameObject.Find("FadeCanvas");
+        //fade = GameObject.Find("FadeCanvas");
         
         // �e�I�u�W�F�N�g�̏����l�ݒ�
         backGround1.transform.localScale = new Vector3(2f, 2f, 2f);
@@ -48,7 +48,8 @@ public class SelectUiAnimatioin : MonoBehaviour
     /// </summary>
     void Start()
     {
-        fade.GetComponent<Fade>().FadeOut(1f, () => SelectAnimStart());
+        //fade.GetComponent<Fade>().FadeOut(1f, () => SelectAnimStart());
+        SelectAnimStart();
     }
 
     void SelectAnimStart()
