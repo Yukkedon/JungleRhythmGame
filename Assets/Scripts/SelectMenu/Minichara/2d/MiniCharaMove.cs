@@ -40,13 +40,24 @@ public class MiniCharaMove : MonoBehaviour
     // 補完用変数(0f～1fの間)
     private float tick;
 
+    // ジャンプ判定
+    [SerializeField] bool isJump ;
+    
+    //
+    [Tooltip("ジャンプ力")]
+    [SerializeField] float jumpPower;
+
+    [Tooltip("ジャンプをする間隔")]
+    [SerializeField] float duration;
+    
+
     /// <summary>
     /// 開始処理
     /// </summary>
     private void Start()
     {
         miniChara.sprite = spriteImage[0];
-        StartCoroutine(Turn());
+        StartCoroutine(TurnAndJump());
     }
 
     /// <summary>
@@ -54,11 +65,12 @@ public class MiniCharaMove : MonoBehaviour
     /// スケールのxを秒数で変えている
     /// </summary>
     /// <returns></returns>
-    IEnumerator Turn()
+    IEnumerator TurnAndJump()
     {
-        // トゥーンアニメーション開始
-        DoTweenAnimMiniChara(-30f, 2f);
-
+        if (isJump == true)
+        {
+            DoTweenAnimMiniChara(jumpPower, duration);
+        }
         // 無限ループ
         while (true)
         {
@@ -96,6 +108,7 @@ public class MiniCharaMove : MonoBehaviour
 
                 yield return null;
             }
+
         }
     }
 
@@ -106,11 +119,11 @@ public class MiniCharaMove : MonoBehaviour
     {
         if (isFront == true)
         {
-            miniChara.sprite = spriteImage[0];
+            miniChara.sprite = spriteImage[Random.Range(0,spriteImage.Length)];
         }
         else
         {
-            miniChara.sprite = spriteImage[1];
+            miniChara.sprite = spriteImage[Random.Range(0, spriteImage.Length)];
         }
     }
 
@@ -120,11 +133,15 @@ public class MiniCharaMove : MonoBehaviour
     /// /// <param name="arrivalPositionY">到達位置</param>
     /// <param name="duration">到達するまでの時間</param>
     /// </summary>
-    private void DoTweenAnimMiniChara(float arrivalPositionY, float duration)
+    private void DoTweenAnimMiniChara(float jopmPower, float duration)
     {
         // y軸のみのアニメーション
-        rectTransform.DOLocalMoveY(arrivalPositionY, duration).
-            SetEase(Ease.OutBounce).SetLoops(-1, LoopType.Yoyo);
+        rectTransform.DOJump(new Vector3(
+            transform.position.x, 
+            transform.position.y,
+            transform.position.z),
+            jopmPower,1,duration).
+            SetLoops(-1, LoopType.Yoyo);
     }
 }
 

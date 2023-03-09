@@ -16,7 +16,7 @@ public class SelectManager : MonoBehaviour
     [SerializeField] Button closebutton;
 
     [SerializeField] GameObject panel;
-    [SerializeField] GameObject fade;
+    //[SerializeField] GameObject fade;
 
     /// <summary>
     /// �J�n����
@@ -33,8 +33,8 @@ public class SelectManager : MonoBehaviour
         yesbutton.onClick.AddListener(OnClickYesButton);
         // �p�l�����\��
         panel.SetActive(false);
+        //fade = GameObject.Find("FadeCanvas");
 
-        fade = GameObject.Find("FadeCanvas");
     }
 
     /// <summary>
@@ -73,10 +73,11 @@ public class SelectManager : MonoBehaviour
     /// </summary>
     private void OnClickYesButton()
     {
+
         // �t�F�[�h����
         // �����ɏ���
-        fade.GetComponent<Fade>().FadeIn(1f, () =>SceneManager.LoadScene("MainScene"));
-
+        //fade.GetComponent<Fade>().FadeIn(1f, () =>SceneManager.LoadScene("MainScene"));
+        SceneManager.LoadScene("MainScene");
     }
 
 }
