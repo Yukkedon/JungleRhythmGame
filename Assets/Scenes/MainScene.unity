@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -382,6 +382,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!224 &211245091 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3159227062614235622, guid: 1439219e4888f4d459235508e8d431f7, type: 3}
+  m_PrefabInstance: {fileID: 301201554}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &301201554
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -880,6 +885,7 @@ MonoBehaviour:
   NoteType: 
   NotesTime: []
   NotesObj: []
+  LongNotesObj: []
   NotesSpeed: 7
   noteObj: {fileID: 6956675484662243556, guid: 71af1877905650a4483e4719c74f16a1, type: 3}
 --- !u!1 &472153612
@@ -2742,7 +2748,7 @@ RectTransform:
   - {fileID: 1757894760}
   - {fileID: 1171697887}
   - {fileID: 2126561956}
-  - {fileID: 33743735}
+  - {fileID: 211245091}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

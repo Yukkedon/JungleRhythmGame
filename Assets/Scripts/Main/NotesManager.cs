@@ -53,6 +53,7 @@ public class NotesManager : MonoBehaviour
     public List<int> NoteType = new List<int>();
     public List<float> NotesTime = new List<float>();
     public List<GameObject> NotesObj = new List<GameObject>();
+    public List<GameObject> LongNotesObj = new List<GameObject>();
 
     [SerializeField] float NotesSpeed;
     [SerializeField] GameObject noteObj;
@@ -83,50 +84,77 @@ public class NotesManager : MonoBehaviour
         {
             float kankaku = 60 / (inputJson.BPM * (float)inputJson.notes[i].LPB);
             float beatSec = kankaku * (float)inputJson.notes[i].LPB;
-            float time = (beatSec * inputJson.notes[i].num / (float)inputJson.notes[i].LPB) + inputJson.offset * 0.01f;
+            float time = (beatSec * (float)inputJson.notes[i].num / (float)inputJson.notes[i].LPB) + inputJson.offset * 0.01f;
             NotesTime.Add(time);
             LaneNum.Add(inputJson.notes[i].block);
             NoteType.Add(inputJson.notes[i].type);
 
             float z = NotesTime[i] * NotesSpeed;
             NotesObj.Add(Instantiate(noteObj, new Vector3(inputJson.notes[i].block - 1.5f, 0.55f, z), Quaternion.identity));
-
-            // ロングノーツ作成
-            if (jsonData["notes"][i]["type"].Equals("2"))
+            Debug.Log(i);
+            // ロングノーツ判定
+            if ((int)jsonData["notes"][i]["type"] == 2)
             {
-                for(int j = 0; j < jsonData["notes"][i]["notes"].Count; j++){
+                // ロングノーツ作成処理
+                for (int j = 0; j < jsonData["notes"][i]["notes"].Count; j++){
+                    Debug.Log((i+j)) ;
                     // JsonDataクラスで(flaot)(int)キャストするとエラーになるため
                     // 一時的に保存する変数を作成
-                    var LPB      = jsonData["notes"][i]["notes"][j]["LPB"];
-                    var NUM      = jsonData["notes"][i]["notes"][j]["num"];
-                    var BLOCK    = jsonData["notes"][i]["notes"][j]["block"];
-                    var TYPE     = jsonData["notes"][i]["notes"][j]["type"];
-                    Debug.Log(NUM);
-                    Debug.Log(BLOCK);
-                    Debug.Log(TYPE);
+                    string LPB      = jsonData["notes"][i]["notes"][j]["LPB"].ToString();
+                    string NUM      = jsonData["notes"][i]["notes"][j]["num"].ToString();
+                    string BLOCK    = jsonData["notes"][i]["notes"][j]["block"].ToString();
+                    string TYPE     = jsonData["notes"][i]["notes"][j]["type"].ToString();
 
-                    kankaku = (int)LPB;
-                    kankaku = 60 / (inputJson.BPM * kankaku);
-                    
-                    beatSec = (int)LPB;
-                    beatSec = kankaku * beatSec;
+                    kankaku = 60 / (inputJson.BPM * float.Parse(LPB));
+                    beatSec = kankaku * float.Parse(LPB);
+                    time = (beatSec * float.Parse(NUM) / float.Parse(LPB) + inputJson.offset * 0.01f);
 
-                    time = (int)NUM / (int)LPB;
-                    time = (beatSec * time + inputJson.offset * 0.01f);
                     NotesTime.Add(time);
-                    LaneNum.Add((int)BLOCK);
-                    NoteType.Add((int)TYPE);
+                    LaneNum.Add(int.Parse(BLOCK));
+                    NoteType.Add(int.Parse(TYPE));
 
                     z = NotesTime[i+j] * NotesSpeed;
-
+                    
                     noteNum++;
                     
-                    NotesObj.Add(Instantiate(noteObj, new Vector3((int)BLOCK - 1.5f, 0.55f, z), Quaternion.identity));
+                    NotesObj.Add(Instantiate(noteObj, new Vector3(int.Parse(BLOCK) - 1.5f, 0.55f, z), Quaternion.identity));
+
+
+                    Debug.Log(NoteType[NoteType.Count - 1]+":"+ NoteType[NoteType.Count - 2]);
+                    Debug.Log((NoteType.Count - 1) + ":" + (NoteType.Count - 2));
+
+                    LongNotesCreate(NotesObj[NotesObj.Count - 2].transform,NotesObj[NotesObj.Count - 1].transform);
                 }
                 
             }
         }
-
         MainManager.instance.maxScore = noteNum * MainManager.instance.MAX_RAITO_POINT;
+    }
+
+    private const int LANE_WIDTH = 1;
+    private void LongNotesCreate(Transform start, Transform end)
+    {
+
+
+        GameObject longNotesLine = new GameObject();
+        longNotesLine.AddComponent<MeshFilter>();
+        longNotesLine.AddComponent<MeshRenderer>();
+
+        Mesh mesh = new Mesh();
+        longNotesLine.GetComponent<MeshFilter>().mesh = mesh;
+        Vector3[] vertices = new Vector3[4];
+        int[] triangles = { 0, 2, 1, 3, 1, 2 };
+
+        vertices[0] = start.position + new Vector3(-LANE_WIDTH / 2, 0, 0);
+        vertices[1] = start.position + new Vector3( LANE_WIDTH / 2, 0, 0);
+        vertices[2] = end.position   + new Vector3( LANE_WIDTH / 2, 0, 0);
+        vertices[3] = end.position   + new Vector3(-LANE_WIDTH / 2, 0, 0);
+
+        Debug.Log(start.position +":"+ end.position);
+
+        mesh.vertices  = vertices;
+        mesh.triangles = triangles;
+
+        mesh.RecalculateNormals();
     }
 }
