@@ -29,6 +29,22 @@ MonoBehaviour:
     m_Address: Assets/Resource/Scores/Manimani.json
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 35c1d0b7ec718e944a56e1a829fb0e6f
+    m_Address: Assets/Resource/Musics/O-gear-gonna-groove.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 44ab9eb3a29d3304ab35d01c17f1f66a
+    m_Address: Assets/Resource/Musics/WelcomeToTheJungleShort.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 971bd4581f3ae674687c85f2d5fa572b
+    m_Address: Assets/Resource/Scores/O-gear-gonna-groove.json
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ee7a4bbf9c4e238458269194a616c771
+    m_Address: Assets/Resource/Scores/WelcomeToTheJungleShort.json
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: bcbcf2833f09f534bb8b663127410a9b, type: 2}
   m_SchemaSet:

@@ -6,11 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class MainManager : MonoBehaviour
 {
-    public static MainManager instance;
 
     [SerializeField] SoundMain soundMain;
 
-    public string songName = "";
+    public string songName = "GurennoYumiya";
 
     public int MAX_RAITO_POINT = 5;
     public int MAX_DIGIT_POINT = 1000000;
@@ -32,17 +31,9 @@ public class MainManager : MonoBehaviour
     int bad      = 0;
     int miss     = 0;
 
-    public void Awake()
+    public void SetStartTime(float startTime)
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
+        this.startTime = startTime;
     }
 
     public void Update()
@@ -95,4 +86,10 @@ public class MainManager : MonoBehaviour
                 break;
         }
     }
+
+    private void OnDestroy()
+    {
+        
+    }
+
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SoundMain : BaseSound
 {
+    [SerializeField] MainManager mainManager;
 
     public enum SE
     {
@@ -13,17 +14,18 @@ public class SoundMain : BaseSound
     // Start is called before the first frame update
     void Start()
     {
-        LoadBGM(MainManager.instance.songName);
+        LoadBGM(mainManager.songName);
     }
 
     // Update is called once per frame
     void Update()
     {
         
-        if (Input.GetKeyDown(KeyCode.Space) && !MainManager.instance.isStart)
+        if (Input.GetKeyDown(KeyCode.Space) && !mainManager.isStart)
         {
-            MainManager.instance.isStart = true;
-            MainManager.instance.startTime = Time.time;
+            mainManager.isStart = true;
+            mainManager.SetStartTime(Time.time);
+            Debug.Log(mainManager.startTime);
             PlayBGM();
         }
 

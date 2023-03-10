@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class HitJudge : MonoBehaviour
 {
+
+    [SerializeField] MainManager mainManager;
     [SerializeField] GameObject[] JudgeMsgObj;
     [SerializeField] NotesManager notesManager;
     [SerializeField] SoundMain    soundMain;
@@ -23,77 +25,78 @@ public class HitJudge : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (MainManager.instance.isStart && !MainManager.instance.isEnd)
+        if (mainManager.isStart && !mainManager.isEnd)
         {
+            // 各レーンに対応したボタン入力の処理
             if (Input.GetKeyDown(KeyCode.D))
             {
-                if (notesManager.LaneNum[0] == 0)
+                if (notesManager.NoteDataAll[0].laneNum == 0)
                 {
-                    CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NotesTime[0] + MainManager.instance.startTime)),0);
+                    CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NoteDataAll[0].time + mainManager.startTime)),0);
                 }
                 else
                 {
-                    if (notesManager.LaneNum[1] == 0)
+                    if (notesManager.NoteDataAll[1].laneNum == 0)
                     {
-                        CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NotesTime[0] + MainManager.instance.startTime)),1);
+                        CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NoteDataAll[1].time + mainManager.startTime)),1);
                     }
                 }
                 soundMain.PlaySE((int)SoundMain.SE.Touch);
             }
             if (Input.GetKeyDown(KeyCode.F))
             {
-                if (notesManager.LaneNum[0] == 1)
+                if (notesManager.NoteDataAll[0].laneNum == 1)
                 {
-                    CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NotesTime[0] + MainManager.instance.startTime)),0);
+                    CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NoteDataAll[0].time + mainManager.startTime)),0);
                 }
                 else
                 {
-                    if (notesManager.LaneNum[1] == 1)
+                    if (notesManager.NoteDataAll[1].laneNum == 1)
                     {
-                        CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NotesTime[0] + MainManager.instance.startTime)), 1);
+                        CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NoteDataAll[1].time + mainManager.startTime)), 1);
                     }
                 }
                 soundMain.PlaySE((int)SoundMain.SE.Touch);
             }
             if (Input.GetKeyDown(KeyCode.J))
             {
-                if (notesManager.LaneNum[0] == 2)
+                if (notesManager.NoteDataAll[0].laneNum == 2)
                 {
-                    CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NotesTime[0] + MainManager.instance.startTime)), 0);
+                    CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NoteDataAll[0].time + mainManager.startTime)), 0);
                 }
                 else
                 {
-                    if (notesManager.LaneNum[1] == 2)
+                    if (notesManager.NoteDataAll[1].laneNum == 2)
                     {
-                        CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NotesTime[0] + MainManager.instance.startTime)), 1);
+                        CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NoteDataAll[1].time + mainManager.startTime)), 1);
                     }
                 }
                 soundMain.PlaySE((int)SoundMain.SE.Touch);
             }
             if (Input.GetKeyDown(KeyCode.K))
             {
-                if (notesManager.LaneNum[0] == 3)
+                if (notesManager.NoteDataAll[0].laneNum == 3)
                 {
-                    CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NotesTime[0] + MainManager.instance.startTime)),0);
-                    MainManager.instance.ResetCombo();
+                    CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NoteDataAll[0].time + mainManager.startTime)),0);
+                    mainManager.ResetCombo();
                 }
                 else
                 {
-                    if (notesManager.LaneNum[1] == 3)
+                    if (notesManager.NoteDataAll[1].laneNum == 3)
                     {
-                        CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NotesTime[0] + MainManager.instance.startTime)), 1);
+                        CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NoteDataAll[1].time + mainManager.startTime)), 1);
                     }
                 }
                 soundMain.PlaySE((int)SoundMain.SE.Touch);
             }
 
             // ミス判定
-            if (Time.time > notesManager.NotesTime[0] + MissSecond + MainManager.instance.startTime)
+            if (Time.time > notesManager.NoteDataAll[0].time + MissSecond + mainManager.startTime)
             {
                 PopupJudgeMsg(3);
                 DeleteData(0);
-                MainManager.instance.ResetCombo();
-                MainManager.instance.AddJudgeCount(3);
+                mainManager.ResetCombo();
+                mainManager.AddJudgeCount(3);
             }
         }
 
@@ -108,52 +111,52 @@ public class HitJudge : MonoBehaviour
     {
         if (timeLag <= PerfectSecond)
         {
-            PopupJudgeMsg(0);
+            PopupJudgeMsg(0,offset);
             DeleteData(offset);
-            MainManager.instance.AddCombo();
-            MainManager.instance.AddJudgeCount(0);
+            mainManager.AddCombo();
+            mainManager.AddJudgeCount(0);
         }
         else if (timeLag <= GreatSecond)
         {
-            PopupJudgeMsg(1);
+            PopupJudgeMsg(1,offset);
             DeleteData(offset);
-            MainManager.instance.AddCombo();
-            MainManager.instance.AddJudgeCount(1);
+            mainManager.AddCombo();
+            mainManager.AddJudgeCount(1);
         }
         else if (timeLag <= BadSecond)
         {
-            PopupJudgeMsg(2);
+            PopupJudgeMsg(2, offset);
             DeleteData(offset);
-            MainManager.instance.ResetCombo();
-            MainManager.instance.AddJudgeCount(2);
+            mainManager.ResetCombo();
+            mainManager.AddJudgeCount(2);
         }
     }
 
     void DeleteData(int offset)
     {
-        notesManager.NotesTime.RemoveAt(0);
-        notesManager.LaneNum.RemoveAt(0);
-        notesManager.NoteType.RemoveAt(0);
+        notesManager.NoteDataAll.RemoveAt(offset);
+        Destroy(notesManager.NotesObj[offset]);
+        notesManager.NotesObj.RemoveAt(offset);
 
-        if (notesManager.NotesTime.Count <= 0)
+        if (notesManager.NoteDataAll.Count <= 0)
         {
-            MainManager.instance.isEnd = true;
+            mainManager.isEnd = true;
         }
     }
 
     void UpdateText()
     {
-        comboText.text = "Combo\n"+MainManager.instance.GetCombo().ToString();
-        scoreText.text = "Score:" + MainManager.instance.GetPoint().ToString();
+        comboText.text = "Combo\n"+mainManager.GetCombo().ToString();
+        scoreText.text = "Score:" + mainManager.GetPoint().ToString();
     }
-    void PopupJudgeMsg(int judge)
+    void PopupJudgeMsg(int judge,int offset = 0)
     {
         // Instanceの削除処理はオブジェクトに記述
-        Instantiate(JudgeMsgObj[judge], new Vector3(notesManager.LaneNum[0] - 1.5f, 0.76f, 0.15f), Quaternion.Euler(45, 0, 0));
+        Instantiate(JudgeMsgObj[judge], new Vector3(notesManager.NoteDataAll[offset].laneNum - 1.5f, 0.76f, 0.15f), Quaternion.Euler(45, 0, 0));
     }
 
     void AddPoint()
     {
-        MainManager.instance.point = (int)Math.Round(1000000 * Math.Floor(MainManager.instance.playerScore / MainManager.instance.maxScore * 1000000) / 1000000);
+        mainManager.point = (int)Math.Round(1000000 * Math.Floor(mainManager.playerScore / mainManager.maxScore * 1000000) / 1000000);
     }
 }
