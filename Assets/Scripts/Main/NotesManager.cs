@@ -12,17 +12,22 @@ using LitJson;
 public class NoteData
 {
     public int type;
-    public int num;
+    public float num;
     public int block;
     public int LPB;
     public List<LongNoteData> longNotes;
+
+    public NoteData(int type,int num,int block,int LPB) 
+    { 
+        
+    }
 }
 
 [Serializable]
 public class LongNoteData
 {
     public int type;
-    public int num;
+    public float num;
     public int block;
     public int LPB;
 }
@@ -38,7 +43,7 @@ public class NotesManager : MonoBehaviour
 {
     public int noteNum;
 
-
+    public List<NoteData> NoteDataAll = new List<NoteData>();
 
     public List<int> LaneNum = new List<int>();
     public List<int> NoteType = new List<int>();
@@ -83,6 +88,9 @@ public class NotesManager : MonoBehaviour
             float space = 60 / (float.Parse(BPM) * float.Parse(LPB));
             float beatSec = space * float.Parse(LPB);
             float time = (beatSec * float.Parse(NUM) / float.Parse(LPB) + float.Parse(OFFSET) * 0.01f);
+
+            //NoteData noteData = new NoteData();
+
             NotesTime.Add(time);
             LaneNum.Add(int.Parse(BLOCK));
             NoteType.Add(int.Parse(TYPE));

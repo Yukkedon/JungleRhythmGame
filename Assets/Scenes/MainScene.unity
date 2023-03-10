@@ -881,6 +881,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   noteNum: 0
+  NoteDataAll: []
   LaneNum: 
   NoteType: 
   NotesTime: []

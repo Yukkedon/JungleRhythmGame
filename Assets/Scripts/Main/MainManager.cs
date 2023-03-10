@@ -10,7 +10,7 @@ public class MainManager : MonoBehaviour
 
     [SerializeField] SoundMain soundMain;
 
-    public string songName = "";
+    public string songName = "GurennoYumiya";
 
     public int MAX_RAITO_POINT = 5;
     public int MAX_DIGIT_POINT = 1000000;
@@ -41,6 +41,7 @@ public class MainManager : MonoBehaviour
         }
         else
         {
+            Debug.Log("toota");
             Destroy(this.gameObject);
         }
     }
@@ -95,4 +96,10 @@ public class MainManager : MonoBehaviour
                 break;
         }
     }
+
+    private void OnDestroy()
+    {
+        
+    }
+
 }
