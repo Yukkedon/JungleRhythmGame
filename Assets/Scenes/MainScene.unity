@@ -882,12 +882,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   noteNum: 0
   mainManager: {fileID: 544927279}
-  NoteDataAll: []
-  LaneNum: 
-  NoteType: 
-  NotesTime: []
   NotesObj: []
-  LongNotesObj: []
   NotesSpeed: 7
   noteObj: {fileID: 6956675484662243556, guid: 71af1877905650a4483e4719c74f16a1, type: 3}
 --- !u!1 &472153612
@@ -1052,7 +1047,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundMain: {fileID: 915999591}
-  songName: GurennoYumiya
+  songName: O-gear-gonna-groove
   MAX_RAITO_POINT: 5
   MAX_DIGIT_POINT: 1000000
   PERFECT_POINT: 5
