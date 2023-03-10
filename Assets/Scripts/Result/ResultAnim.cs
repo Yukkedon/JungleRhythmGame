@@ -18,6 +18,8 @@ public class ResultAnim : MonoBehaviour
     [SerializeField] private GameObject prefectText;
     // リザルトロゴ
     [SerializeField] private TextMeshProUGUI resultText;
+    // ボタン
+    [SerializeField] private GameObject buttons;
     
     /// <summary>
     /// 開始処理（Startより前に実行）
@@ -25,12 +27,13 @@ public class ResultAnim : MonoBehaviour
     private void Awake() 
     {
         // 移動するゲームオブジェクトの初期値設定
-        scorePanel.transform.localPosition = new Vector3(-73f,-900f,0f);
+        scorePanel.transform.localPosition = new Vector3(-260f,-900f,0f);
         resultTextObject.transform.localPosition = new Vector3(1118f,170f,0f);
         // 大きさを変更するオブジェクトの初期値設定
         backGround1.transform.localScale = new Vector3(3.5f,3.5f,3.5f);
         backGround2.transform.localScale = new Vector3(3f,3f,3f);
-        for(int i = 0; i<miniChara.Length;i++)
+        buttons.transform.localScale = new Vector3(0f, 0f, 0f);
+        for (int i = 0; i<miniChara.Length;i++)
         {
             miniChara[i].transform.localScale = Vector3.zero;
         }
@@ -65,7 +68,8 @@ public class ResultAnim : MonoBehaviour
             miniChara[i].transform.DOScale(new Vector3(1f,1f,1f),2f).SetEase(Ease.OutBounce);
         }   
         yield return new WaitForSeconds(0.5f);
-       
+        buttons.transform.DOScale(new Vector3(1f, 1f, 1f), 1f).SetEase(Ease.OutBounce);
+        yield return new WaitForSeconds(0.5f);
         // スコアロゴを表示
         prefectText.SetActive(true);
 

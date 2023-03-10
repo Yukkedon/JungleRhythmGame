@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SkyBoxManager : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class SkyBoxManager : MonoBehaviour
 
     // ƒJƒƒ‰‚Ì‰ñ“]
     private Vector3 newAngle = new Vector3(0f, 0f, 0f);
+
 
     private void Start()
     {
@@ -59,11 +61,14 @@ public class SkyBoxManager : MonoBehaviour
     /// </summary>
     private void ChangeSkyBox()
     {
-        sky.SetFloat("_value", alphaValue);
-
-        if (alphaValue <= 1)
+        if (SceneManager.GetActiveScene().name == "ResultScene")
         {
-            alphaValue += 0.005f;
+            sky.SetFloat("_value", alphaValue);
+
+            if (alphaValue <= 1)
+            {
+                alphaValue += 0.005f;
+            }
         }
     }
 }
