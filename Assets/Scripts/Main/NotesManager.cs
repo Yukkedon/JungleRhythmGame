@@ -8,22 +8,27 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 
 using LitJson;
 
-[Serializable]
+
 public class NoteData
 {
     public int type;
-    public float num;
-    public int block;
-    public int LPB;
+    public float time;
+    public int laneNum;
+    public float LPB;
     public List<LongNoteData> longNotes;
-
-    public NoteData(int type,int num,int block,int LPB) 
+    public NoteData() 
+    {
+        longNotes = new List<LongNoteData>();
+    }
+    public NoteData(int type,float time,int laneNum,float LPB) 
     { 
-        
+        this.type = type;
+        this.time = time;
+        this.laneNum = laneNum;
+        this.LPB = LPB;
     }
 }
 
-[Serializable]
 public class LongNoteData
 {
     public int type;
@@ -46,12 +51,13 @@ public class NotesManager : MonoBehaviour
     [SerializeField] MainManager mainManager;
 
     public List<NoteData> NoteDataAll = new List<NoteData>();
+    public List<GameObject> NotesObj = new List<GameObject>();
 
-    public List<int> LaneNum = new List<int>();
+    /*public List<int> LaneNum = new List<int>();
     public List<int> NoteType = new List<int>();
     public List<float> NotesTime = new List<float>();
-    public List<GameObject> NotesObj = new List<GameObject>();
-    public List<GameObject> LongNotesObj = new List<GameObject>();
+    
+    public List<GameObject> LongNotesObj = new List<GameObject>();*/
 
     [SerializeField] float NotesSpeed;
     [SerializeField] GameObject noteObj;
@@ -70,13 +76,12 @@ public class NotesManager : MonoBehaviour
         var scoreLoad = json.WaitForCompletion();
 
         TextAsset score = json.Result as TextAsset;
-        //Data inputJson = JsonMapper.ToObject<Data>(score.text);  // LitJson
-
         JsonData jsonData = JsonMapper.ToObject(score.ToString());
 
         Addressables.Release(json);
 
         noteNum = jsonData["notes"].Count;
+
         string BPM = jsonData["BPM"].ToString();
         string OFFSET = jsonData["offset"].ToString();
 
@@ -91,16 +96,16 @@ public class NotesManager : MonoBehaviour
             float beatSec = space * float.Parse(LPB);
             float time = (beatSec * float.Parse(NUM) / float.Parse(LPB) + float.Parse(OFFSET) * 0.01f);
 
-            //NoteData noteData = new NoteData();
+            NoteData noteData = new NoteData(int.Parse(TYPE),time, int.Parse(BLOCK), float.Parse(LPB));
 
-            NotesTime.Add(time);
-            LaneNum.Add(int.Parse(BLOCK));
-            NoteType.Add(int.Parse(TYPE));
+            float z = noteData.time * NotesSpeed;
+            NotesObj.Add(Instantiate(noteObj, new Vector3(noteData.laneNum - 1.5f, 0.55f, z), Quaternion.identity));
+            NoteDataAll.Add(noteData);
 
-            float z = NotesTime[NotesTime.Count - 1] * NotesSpeed;
-            NotesObj.Add(Instantiate(noteObj, new Vector3(int.Parse(BLOCK) - 1.5f, 0.55f, z), Quaternion.identity));
+            Debug.Log(i+":"+noteData.time);
+
             // ロングノーツ判定
-            if ((int)jsonData["notes"][i]["type"] == 2)
+            if (noteData.type == 2)
             {
                 // ロングノーツ作成処理
                 for (int j = 0; j < jsonData["notes"][i]["notes"].Count; j++){
@@ -115,17 +120,17 @@ public class NotesManager : MonoBehaviour
                     beatSec = space * float.Parse(LPB);
                     time    = (beatSec * float.Parse(NUM) / float.Parse(LPB) + float.Parse(OFFSET) * 0.01f);
 
-                    NotesTime.Add(time);
-                    LaneNum.Add(int.Parse(BLOCK));
-                    NoteType.Add(int.Parse(TYPE));
+                    noteData = new NoteData(int.Parse(TYPE), time, int.Parse(BLOCK), float.Parse(LPB));
 
-                    z = NotesTime[NotesTime.Count - 1] * NotesSpeed;
+                    z = noteData.time * NotesSpeed;
                     
                     noteNum++;
                     
-                    NotesObj.Add(Instantiate(noteObj, new Vector3(int.Parse(BLOCK) - 1.5f, 0.55f, z), Quaternion.identity));
+                    NotesObj.Add(Instantiate(noteObj, new Vector3(noteData.laneNum - 1.5f, 0.55f, z), Quaternion.identity));
 
                     LongNotesCreate(NotesObj[NotesObj.Count - 2].transform,NotesObj[NotesObj.Count - 1].transform);
+
+                    NoteDataAll.Add(noteData);
                 }
                 
             }

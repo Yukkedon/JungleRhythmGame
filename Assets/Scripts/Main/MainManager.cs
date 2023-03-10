@@ -31,6 +31,10 @@ public class MainManager : MonoBehaviour
     int bad      = 0;
     int miss     = 0;
 
+    public void SetStartTime(float startTime)
+    {
+        this.startTime = startTime;
+    }
 
     public void Update()
     {

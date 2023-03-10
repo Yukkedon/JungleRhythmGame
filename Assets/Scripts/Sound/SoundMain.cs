@@ -24,7 +24,8 @@ public class SoundMain : BaseSound
         if (Input.GetKeyDown(KeyCode.Space) && !mainManager.isStart)
         {
             mainManager.isStart = true;
-            mainManager.startTime = Time.time;
+            mainManager.SetStartTime(Time.time);
+            Debug.Log(mainManager.startTime);
             PlayBGM();
         }
 

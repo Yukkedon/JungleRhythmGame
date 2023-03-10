@@ -10,7 +10,7 @@ public class Notes : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !isStart)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             isStart = true;
         }
