@@ -21,10 +21,10 @@ public class SoundMain : BaseSound
     void Update()
     {
         
-        if (Input.GetKeyDown(KeyCode.Space) && !MainManager.instance.isStart)
+        if (Input.GetKeyDown(KeyCode.Space) && !mainManager.isStart)
         {
-            MainManager.instance.isStart = true;
-            MainManager.instance.startTime = Time.time;
+            mainManager.isStart = true;
+            mainManager.startTime = Time.time;
             PlayBGM();
         }
 

@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class MainManager : MonoBehaviour
 {
-    public static MainManager instance;
 
     [SerializeField] SoundMain soundMain;
 
@@ -32,19 +31,6 @@ public class MainManager : MonoBehaviour
     int bad      = 0;
     int miss     = 0;
 
-    public void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
-        else
-        {
-            Debug.Log("toota");
-            Destroy(this.gameObject);
-        }
-    }
 
     public void Update()
     {

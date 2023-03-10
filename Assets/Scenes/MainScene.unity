@@ -881,6 +881,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   noteNum: 0
+  mainManager: {fileID: 544927279}
   NoteDataAll: []
   LaneNum: 
   NoteType: 
@@ -993,6 +994,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04308d5238c9a5c4c8dac0aa503698b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainManager: {fileID: 544927279}
   JudgeMsgObj:
   - {fileID: 9067733942104537841, guid: 1f8d763129e462745a0f712f947cd297, type: 3}
   - {fileID: 8310219278010053322, guid: fbd5809e2f4832e4d94b06fb78d4bb9a, type: 3}
@@ -1421,6 +1423,7 @@ MonoBehaviour:
   seSuorce: {fileID: 915999592}
   seClip:
   - {fileID: 8300000, guid: 99471fe9211247646892641db97d045d, type: 3}
+  mainManager: {fileID: 544927279}
 --- !u!82 &915999592
 AudioSource:
   m_ObjectHideFlags: 0

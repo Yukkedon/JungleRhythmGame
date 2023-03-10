@@ -43,6 +43,8 @@ public class NotesManager : MonoBehaviour
 {
     public int noteNum;
 
+    [SerializeField] MainManager mainManager;
+
     public List<NoteData> NoteDataAll = new List<NoteData>();
 
     public List<int> LaneNum = new List<int>();
@@ -57,14 +59,14 @@ public class NotesManager : MonoBehaviour
     void Start()
     {
         noteNum = 0;
-        Load(MainManager.instance.songName);
+        Load(mainManager.songName);
 
     }
 
     private void Load(string SongName)
     {
         AsyncOperationHandle json;
-        json = Addressables.LoadAssetAsync<TextAsset>($"Assets/Resource/Scores/{MainManager.instance.songName}.json");
+        json = Addressables.LoadAssetAsync<TextAsset>($"Assets/Resource/Scores/{mainManager.songName}.json");
         var scoreLoad = json.WaitForCompletion();
 
         TextAsset score = json.Result as TextAsset;
@@ -129,7 +131,7 @@ public class NotesManager : MonoBehaviour
             }
         }
         Debug.Log(noteNum);
-        MainManager.instance.maxScore = noteNum * MainManager.instance.MAX_RAITO_POINT;
+        mainManager.maxScore = noteNum * mainManager.MAX_RAITO_POINT;
     }
 
     private const int LANE_WIDTH = 1;
