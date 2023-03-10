@@ -25,6 +25,7 @@ public class HitJudge : MonoBehaviour
     {
         if (MainManager.instance.isStart && !MainManager.instance.isEnd)
         {
+            // 各レーンに対応したボタン入力の処理
             if (Input.GetKeyDown(KeyCode.D))
             {
                 if (notesManager.LaneNum[0] == 0)
@@ -35,7 +36,7 @@ public class HitJudge : MonoBehaviour
                 {
                     if (notesManager.LaneNum[1] == 0)
                     {
-                        CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NotesTime[0] + MainManager.instance.startTime)),1);
+                        CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NotesTime[1] + MainManager.instance.startTime)),1);
                     }
                 }
                 soundMain.PlaySE((int)SoundMain.SE.Touch);
@@ -50,7 +51,7 @@ public class HitJudge : MonoBehaviour
                 {
                     if (notesManager.LaneNum[1] == 1)
                     {
-                        CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NotesTime[0] + MainManager.instance.startTime)), 1);
+                        CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NotesTime[1] + MainManager.instance.startTime)), 1);
                     }
                 }
                 soundMain.PlaySE((int)SoundMain.SE.Touch);
@@ -65,7 +66,7 @@ public class HitJudge : MonoBehaviour
                 {
                     if (notesManager.LaneNum[1] == 2)
                     {
-                        CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NotesTime[0] + MainManager.instance.startTime)), 1);
+                        CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NotesTime[1] + MainManager.instance.startTime)), 1);
                     }
                 }
                 soundMain.PlaySE((int)SoundMain.SE.Touch);
@@ -81,7 +82,7 @@ public class HitJudge : MonoBehaviour
                 {
                     if (notesManager.LaneNum[1] == 3)
                     {
-                        CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NotesTime[0] + MainManager.instance.startTime)), 1);
+                        CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NotesTime[1] + MainManager.instance.startTime)), 1);
                     }
                 }
                 soundMain.PlaySE((int)SoundMain.SE.Touch);
@@ -108,21 +109,21 @@ public class HitJudge : MonoBehaviour
     {
         if (timeLag <= PerfectSecond)
         {
-            PopupJudgeMsg(0);
+            PopupJudgeMsg(0,offset);
             DeleteData(offset);
             MainManager.instance.AddCombo();
             MainManager.instance.AddJudgeCount(0);
         }
         else if (timeLag <= GreatSecond)
         {
-            PopupJudgeMsg(1);
+            PopupJudgeMsg(1,offset);
             DeleteData(offset);
             MainManager.instance.AddCombo();
             MainManager.instance.AddJudgeCount(1);
         }
         else if (timeLag <= BadSecond)
         {
-            PopupJudgeMsg(2);
+            PopupJudgeMsg(2, offset);
             DeleteData(offset);
             MainManager.instance.ResetCombo();
             MainManager.instance.AddJudgeCount(2);
@@ -131,9 +132,11 @@ public class HitJudge : MonoBehaviour
 
     void DeleteData(int offset)
     {
-        notesManager.NotesTime.RemoveAt(0);
-        notesManager.LaneNum.RemoveAt(0);
-        notesManager.NoteType.RemoveAt(0);
+        notesManager.NotesTime.RemoveAt(offset);
+        notesManager.LaneNum.RemoveAt(offset);
+        notesManager.NoteType.RemoveAt(offset);
+        Destroy(notesManager.NotesObj[offset]);
+        notesManager.NotesObj.RemoveAt(offset);
 
         if (notesManager.NotesTime.Count <= 0)
         {
@@ -146,10 +149,10 @@ public class HitJudge : MonoBehaviour
         comboText.text = "Combo\n"+MainManager.instance.GetCombo().ToString();
         scoreText.text = "Score:" + MainManager.instance.GetPoint().ToString();
     }
-    void PopupJudgeMsg(int judge)
+    void PopupJudgeMsg(int judge,int offset = 0)
     {
         // Instanceの削除処理はオブジェクトに記述
-        Instantiate(JudgeMsgObj[judge], new Vector3(notesManager.LaneNum[0] - 1.5f, 0.76f, 0.15f), Quaternion.Euler(45, 0, 0));
+        Instantiate(JudgeMsgObj[judge], new Vector3(notesManager.LaneNum[offset] - 1.5f, 0.76f, 0.15f), Quaternion.Euler(45, 0, 0));
     }
 
     void AddPoint()

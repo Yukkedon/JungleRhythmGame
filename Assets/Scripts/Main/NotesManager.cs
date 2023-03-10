@@ -8,17 +8,6 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 
 using LitJson;
 
-
-[Serializable]
-public class Data
-{
-    public string name;
-    public int maxBlock;
-    public int BPM;
-    public int offset;
-    public List<NoteData> notes;
-}
-
 [Serializable]
 public class NoteData
 {
@@ -49,6 +38,8 @@ public class NotesManager : MonoBehaviour
 {
     public int noteNum;
 
+
+
     public List<int> LaneNum = new List<int>();
     public List<int> NoteType = new List<int>();
     public List<float> NotesTime = new List<float>();
@@ -72,62 +63,64 @@ public class NotesManager : MonoBehaviour
         var scoreLoad = json.WaitForCompletion();
 
         TextAsset score = json.Result as TextAsset;
-        Data inputJson = JsonMapper.ToObject<Data>(score.text);  // LitJson
+        //Data inputJson = JsonMapper.ToObject<Data>(score.text);  // LitJson
 
         JsonData jsonData = JsonMapper.ToObject(score.ToString());
 
         Addressables.Release(json);
 
-        noteNum = inputJson.notes.Count;
+        noteNum = jsonData["notes"].Count;
+        string BPM = jsonData["BPM"].ToString();
+        string OFFSET = jsonData["offset"].ToString();
 
-        for (int i = 0; i < inputJson.notes.Count; i++)
+        for (int i = 0; i < jsonData["notes"].Count; i++)
         {
-            float kankaku = 60 / (inputJson.BPM * (float)inputJson.notes[i].LPB);
-            float beatSec = kankaku * (float)inputJson.notes[i].LPB;
-            float time = (beatSec * (float)inputJson.notes[i].num / (float)inputJson.notes[i].LPB) + inputJson.offset * 0.01f;
-            NotesTime.Add(time);
-            LaneNum.Add(inputJson.notes[i].block);
-            NoteType.Add(inputJson.notes[i].type);
+            string LPB = jsonData["notes"][i]["LPB"].ToString();
+            string NUM = jsonData["notes"][i]["num"].ToString();
+            string BLOCK = jsonData["notes"][i]["block"].ToString();
+            string TYPE = jsonData["notes"][i]["type"].ToString();
 
-            float z = NotesTime[i] * NotesSpeed;
-            NotesObj.Add(Instantiate(noteObj, new Vector3(inputJson.notes[i].block - 1.5f, 0.55f, z), Quaternion.identity));
-            Debug.Log(i);
+            float space = 60 / (float.Parse(BPM) * float.Parse(LPB));
+            float beatSec = space * float.Parse(LPB);
+            float time = (beatSec * float.Parse(NUM) / float.Parse(LPB) + float.Parse(OFFSET) * 0.01f);
+            NotesTime.Add(time);
+            LaneNum.Add(int.Parse(BLOCK));
+            NoteType.Add(int.Parse(TYPE));
+
+            float z = NotesTime[NotesTime.Count - 1] * NotesSpeed;
+            NotesObj.Add(Instantiate(noteObj, new Vector3(int.Parse(BLOCK) - 1.5f, 0.55f, z), Quaternion.identity));
             // ロングノーツ判定
             if ((int)jsonData["notes"][i]["type"] == 2)
             {
                 // ロングノーツ作成処理
                 for (int j = 0; j < jsonData["notes"][i]["notes"].Count; j++){
-                    Debug.Log((i+j)) ;
                     // JsonDataクラスで(flaot)(int)キャストするとエラーになるため
                     // 一時的に保存する変数を作成
-                    string LPB      = jsonData["notes"][i]["notes"][j]["LPB"].ToString();
-                    string NUM      = jsonData["notes"][i]["notes"][j]["num"].ToString();
-                    string BLOCK    = jsonData["notes"][i]["notes"][j]["block"].ToString();
-                    string TYPE     = jsonData["notes"][i]["notes"][j]["type"].ToString();
+                    LPB      = jsonData["notes"][i]["notes"][j]["LPB"].ToString();
+                    NUM      = jsonData["notes"][i]["notes"][j]["num"].ToString();
+                    BLOCK    = jsonData["notes"][i]["notes"][j]["block"].ToString();
+                    TYPE     = jsonData["notes"][i]["notes"][j]["type"].ToString();
 
-                    kankaku = 60 / (inputJson.BPM * float.Parse(LPB));
-                    beatSec = kankaku * float.Parse(LPB);
-                    time = (beatSec * float.Parse(NUM) / float.Parse(LPB) + inputJson.offset * 0.01f);
+                    space = 60 / (float.Parse(BPM) * float.Parse(LPB));
+                    beatSec = space * float.Parse(LPB);
+                    time    = (beatSec * float.Parse(NUM) / float.Parse(LPB) + float.Parse(OFFSET) * 0.01f);
 
                     NotesTime.Add(time);
                     LaneNum.Add(int.Parse(BLOCK));
                     NoteType.Add(int.Parse(TYPE));
 
-                    z = NotesTime[i+j] * NotesSpeed;
+                    z = NotesTime[NotesTime.Count - 1] * NotesSpeed;
                     
                     noteNum++;
                     
                     NotesObj.Add(Instantiate(noteObj, new Vector3(int.Parse(BLOCK) - 1.5f, 0.55f, z), Quaternion.identity));
-
-
-                    Debug.Log(NoteType[NoteType.Count - 1]+":"+ NoteType[NoteType.Count - 2]);
-                    Debug.Log((NoteType.Count - 1) + ":" + (NoteType.Count - 2));
 
                     LongNotesCreate(NotesObj[NotesObj.Count - 2].transform,NotesObj[NotesObj.Count - 1].transform);
                 }
                 
             }
         }
+        Debug.Log(noteNum);
         MainManager.instance.maxScore = noteNum * MainManager.instance.MAX_RAITO_POINT;
     }
 
@@ -149,8 +142,6 @@ public class NotesManager : MonoBehaviour
         vertices[1] = start.position + new Vector3( LANE_WIDTH / 2, 0, 0);
         vertices[2] = end.position   + new Vector3( LANE_WIDTH / 2, 0, 0);
         vertices[3] = end.position   + new Vector3(-LANE_WIDTH / 2, 0, 0);
-
-        Debug.Log(start.position +":"+ end.position);
 
         mesh.vertices  = vertices;
         mesh.triangles = triangles;
