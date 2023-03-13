@@ -11,12 +11,12 @@ using LitJson;
 
 public class NoteData
 {
-    public int type;
-    public float time;
-    public int laneNum;
-    public float LPB;
+    public int      type;
+    public float    time;
+    public int      laneNum;
+    public float    LPB;
     public List<LongNoteData> longNotes;
-
+    public bool isPush = false;     // ロングノーツ判定用
 
     public NoteData(int type,float time,int laneNum,float LPB) 
     { 
@@ -33,10 +33,11 @@ public class NoteData
 
 public class LongNoteData
 {
-    public int type;
-    public float time;
-    public int laneNum;
-    public float LPB;
+    public int      type;
+    public float    time;
+    public int      laneNum;
+    public float    LPB;
+    public bool     passnext = false;
 
     public LongNoteData(int type, float time, int laneNum, float LPB)
     {
@@ -148,9 +149,6 @@ public class NotesManager : MonoBehaviour
                         // 2個以上は1つ前のノーツ情報を取得するため j - 1 で指定している
                         LongNotesCreate(NoteDataAll[NoteDataAll.Count - 1].longNotes[j - 1].notes.transform, longnoteData.notes.transform, NotesObj[NotesObj.Count - 1]);
                     }
-                    
-
-                    //NoteDataAll.Add(noteData);
                 }
                 
             }

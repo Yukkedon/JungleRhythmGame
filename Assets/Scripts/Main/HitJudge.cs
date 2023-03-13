@@ -31,12 +31,11 @@ public class HitJudge : MonoBehaviour
 
     bool[] pushingKeyState = new bool[4] { false, false, false, false };
 
+    List<NoteData> longNoteDataList = new List<NoteData>();
+
     // Update is called once per frame
     void Update()
     {
-        // ロングノーツがあるかどうか
-        bool isLong0 = notesManager.NoteDataAll[0].type == 2;
-        bool isLong1 = notesManager.NoteDataAll[1].type == 2;
 
         if (mainManager.isStart && !mainManager.isEnd)
         {
@@ -44,66 +43,132 @@ public class HitJudge : MonoBehaviour
             // 各レーンに対応したボタン入力の処理
             if (Input.GetKeyDown(KeyCode.D))
             {
+                
                 if (notesManager.NoteDataAll[0].laneNum == 0)
                 {
-                    CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NoteDataAll[0].time + mainManager.startTime)),0);
+                    if (notesManager.NoteDataAll[0].type != 2)
+                    {
+                        CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NoteDataAll[0].time + mainManager.startTime)), 0);
+                    }
+                    else
+                    {
+                        longNoteDataList.Add(notesManager.NoteDataAll[0]);
+                        CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NoteDataAll[0].time + mainManager.startTime)), 0,true);
+                    }
                 }
                 else
                 {
                     if (notesManager.NoteDataAll[1].laneNum == 0)
                     {
-                        CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NoteDataAll[1].time + mainManager.startTime)),1);
+                        if (notesManager.NoteDataAll[1].type != 2)
+                        {
+                            CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NoteDataAll[1].time + mainManager.startTime)), 1);
+                        }
+                        else
+                        {
+                            longNoteDataList.Add(notesManager.NoteDataAll[1]);
+                            CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NoteDataAll[1].time + mainManager.startTime)), 1,true);
+                        }
                     }
                 }
                 soundMain.PlaySE((int)SoundMain.SE.Touch);
             }
             if (Input.GetKeyDown(KeyCode.F))
             {
+                
                 if (notesManager.NoteDataAll[0].laneNum == 1)
                 {
-                    CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NoteDataAll[0].time + mainManager.startTime)),0);
+                    if (notesManager.NoteDataAll[0].type != 2)
+                    {
+                        CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NoteDataAll[0].time + mainManager.startTime)), 0);
+                    }
+                    else
+                    {
+                        longNoteDataList.Add(notesManager.NoteDataAll[0]);
+                        CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NoteDataAll[0].time + mainManager.startTime)), 0,true);
+                    }
                 }
                 else
                 {
                     if (notesManager.NoteDataAll[1].laneNum == 1)
                     {
-                        CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NoteDataAll[1].time + mainManager.startTime)), 1);
+                        if (notesManager.NoteDataAll[1].type != 2)
+                        {
+                            CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NoteDataAll[1].time + mainManager.startTime)), 1);
+                        }
+                        else
+                        {
+                            longNoteDataList.Add(notesManager.NoteDataAll[1]);
+                            CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NoteDataAll[1].time + mainManager.startTime)), 1,true);
+                        }
                     }
                 }
                 soundMain.PlaySE((int)SoundMain.SE.Touch);
             }
             if (Input.GetKeyDown(KeyCode.J))
             {
+                
                 if (notesManager.NoteDataAll[0].laneNum == 2)
                 {
-                    CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NoteDataAll[0].time + mainManager.startTime)), 0);
+                    if (notesManager.NoteDataAll[0].type != 2)
+                    {
+                        CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NoteDataAll[0].time + mainManager.startTime)), 0);
+                    }
+                    else
+                    {
+                        longNoteDataList.Add(notesManager.NoteDataAll[0]);
+                        CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NoteDataAll[0].time + mainManager.startTime)), 0,true);
+                    }
                 }
                 else
                 {
                     if (notesManager.NoteDataAll[1].laneNum == 2)
                     {
-                        CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NoteDataAll[1].time + mainManager.startTime)), 1, isLong1);
+                        if (notesManager.NoteDataAll[1].type != 2)
+                        {
+                            CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NoteDataAll[1].time + mainManager.startTime)), 1);
+                        }
+                        else
+                        {
+                            longNoteDataList.Add(notesManager.NoteDataAll[1]);
+                            CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NoteDataAll[1].time + mainManager.startTime)), 1,true);
+                        }
                     }
                 }
                 soundMain.PlaySE((int)SoundMain.SE.Touch);
             }
             if (Input.GetKeyDown(KeyCode.K))
             {
+                
                 if (notesManager.NoteDataAll[0].laneNum == 3)
                 {
-                    CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NoteDataAll[0].time + mainManager.startTime)),0, isLong0);
-                    mainManager.ResetCombo();
+                    if (notesManager.NoteDataAll[0].type != 2)
+                    {
+                        CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NoteDataAll[0].time + mainManager.startTime)), 0);
+                    }
+                    else
+                    {
+                        longNoteDataList.Add(notesManager.NoteDataAll[0]);
+                        CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NoteDataAll[0].time + mainManager.startTime)), 0,true);
+                    }
                 }
                 else
                 {
                     if (notesManager.NoteDataAll[1].laneNum == 3)
                     {
-                        CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NoteDataAll[1].time + mainManager.startTime)), 1, isLong1);
+                        if (notesManager.NoteDataAll[1].type != 2)
+                        {
+                            CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NoteDataAll[1].time + mainManager.startTime)), 1);
+                        }
+                        else
+                        {
+                            longNoteDataList.Add(notesManager.NoteDataAll[1]);
+                            CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NoteDataAll[1].time + mainManager.startTime)), 1,true);
+                        }
                     }
                 }
                 soundMain.PlaySE((int)SoundMain.SE.Touch);
             }
-
             
 
             // ミス判定
@@ -117,13 +182,13 @@ public class HitJudge : MonoBehaviour
         }
         UpdatePushingKeyState();
 
-        if (isLong0)
+        if (longNoteDataList.Count != 0)
         {
-            UpdateLongNotes(notesManager.NoteDataAll[0]);
-        }
-        else if (isLong1)
-        {
-            UpdateLongNotes(notesManager.NoteDataAll[1]);
+            foreach(NoteData note in longNoteDataList)
+            {
+                UpdateLongNotes(note);
+            }
+            
         }
 
     }
@@ -133,36 +198,56 @@ public class HitJudge : MonoBehaviour
         UpdateText();
     }
 
-    void CheckHitTiming(float timeLag,int offset,bool isLong = false)
+    void CheckHitTiming(float timeLag,int offset, bool isLong = false)
     {
-        
         if (timeLag <= PerfectSecond)
         {
-            PopupJudgeMsg(0,offset);
-            DeleteData(offset);
+            PopupJudgeMsg(0, offset);
             mainManager.AddCombo();
             mainManager.AddJudgeCount(0);
         }
         else if (timeLag <= GreatSecond)
         {
-            PopupJudgeMsg(1,offset);
-            DeleteData(offset);
+            PopupJudgeMsg(1, offset);
             mainManager.AddCombo();
             mainManager.AddJudgeCount(1);
         }
         else if (timeLag <= BadSecond)
         {
             PopupJudgeMsg(2, offset);
-            DeleteData(offset);
             mainManager.ResetCombo();
             mainManager.AddJudgeCount(2);
         }
-
+        // ロングノーツである場合はすべて削除しない
+        if (!isLong && timeLag <= BadSecond)
+        {
+            DeleteData(offset);
+        }
+        else if (isLong && timeLag <= BadSecond)
+        {
+            notesManager.NoteDataAll.RemoveAt(offset);
+            Destroy(notesManager.NotesObj[offset]);
+        }
     }
 
-    void UpdateLongNotes(NoteData notesData)
-    {
 
+
+    void UpdateLongNotes(NoteData notedata)
+    {
+        
+        foreach(LongNoteData note in notedata.longNotes)
+        {
+            Debug.Log(notedata.type);
+            if (notedata.longNotes.Count == 1)
+            {
+
+            }
+            else if (notedata.longNotes.Count > 1)
+            {
+                
+            }
+        }
+        
     }
 
     
@@ -187,24 +272,6 @@ public class HitJudge : MonoBehaviour
 
         notesManager.NoteDataAll.RemoveAt(offset);
         Destroy(notesManager.NotesObj[offset]);
-        notesManager.NotesObj.RemoveAt(offset);
-
-        if (notesManager.NoteDataAll.Count <= 0)
-        {
-            mainManager.isEnd = true;
-        }
-    }
-
-    // ロングノーツの情報を持っているオブジェクト・リストの削除
-    void DeleteDataLongNotes(int offset)
-    {
-        
-        Destroy(notesManager.NotesObj[offset]);
-        foreach(LongNoteData longnotes in notesManager.NoteDataAll[offset].longNotes)
-        {
-            Destroy(notesManager.NotesObj[offset]);
-        }
-
         notesManager.NotesObj.RemoveAt(offset);
 
         if (notesManager.NoteDataAll.Count <= 0)
