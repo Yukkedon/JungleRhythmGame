@@ -20,7 +20,7 @@ public class SelectUiAnimatioin : MonoBehaviour
     [SerializeField] private GameObject[] miniChara;
     
     // �����͕ύX�\��
-    [SerializeField] private GameObject SelectButton;
+    [SerializeField] private GameObject SelectButtons;
 
     //[SerializeField] private GameObject fade = default;
     
@@ -34,13 +34,14 @@ public class SelectUiAnimatioin : MonoBehaviour
         // �e�I�u�W�F�N�g�̏����l�ݒ�
         backGround1.transform.localScale = new Vector3(2f, 2f, 2f);
         backGround2.transform.localScale = new Vector3(3.5f, 3.5f, 3.5f);
+        SelectButtons.transform.localScale = Vector3.zero;
         textPanel.transform.localPosition = new Vector3(0f, 300f, 0f);
         for (int i = 0; i < miniChara.Length; i++)
         {
             miniChara[i].transform.localScale = Vector3.zero;
         }
-        // �Z���N�g�{�^���͔�\��
-        SelectButton.SetActive(false);
+        SelectButtons.SetActive(false);
+
     }
 
     /// <summary>
@@ -112,8 +113,9 @@ public class SelectUiAnimatioin : MonoBehaviour
         {
             miniChara[i].transform.DOScale(new Vector3(1, 1, 1), 1f).SetEase(Ease.OutBounce);
         }
-        yield return new WaitForSeconds(2f);
-        SelectButton.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        SelectButtons.SetActive(true);
+        SelectButtons.transform.DOScale(new Vector3(1, 1, 1), 1f);
 
     }
 }
