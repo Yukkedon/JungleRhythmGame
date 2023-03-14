@@ -16,7 +16,16 @@ public class NoteData
     public int      laneNum;
     public float    LPB;
     public List<LongNoteData> longNotes;
-    public bool isPush = false;     // ロングノーツ判定用
+    public bool isEnd = false;     // ロングノーツ判定用
+
+    public NoteData(NoteData noteData)
+    {
+        type = noteData.type;
+        time = noteData.time;
+        laneNum = noteData.laneNum;
+        LPB = noteData.LPB;
+        longNotes = new List<LongNoteData>(noteData.longNotes);
+    }
 
     public NoteData(int type,float time,int laneNum,float LPB) 
     { 
@@ -24,6 +33,8 @@ public class NoteData
         this.time = time;
         this.laneNum = laneNum;
         this.LPB = LPB;
+
+        
         if (this.type == 2)
         {
             longNotes = new List<LongNoteData>();
@@ -39,6 +50,14 @@ public class LongNoteData
     public float    LPB;
     public bool     passnext = false;
 
+
+    public LongNoteData(LongNoteData noteData)
+    {
+        this.type = noteData.type;
+        this.time = noteData.time;
+        this.laneNum = noteData.laneNum;
+        this.LPB = noteData.LPB;
+    }
     public LongNoteData(int type, float time, int laneNum, float LPB)
     {
         this.type = type;
