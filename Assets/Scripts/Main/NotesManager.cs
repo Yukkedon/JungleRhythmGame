@@ -142,12 +142,12 @@ public class NotesManager : MonoBehaviour
                     // 最初に軌道する場合はこちら
                     if (NoteDataAll[NoteDataAll.Count - 1].longNotes.Count == 1)
                     {
-                        LongNotesCreate(NotesObj[NotesObj.Count - 1].transform, longnoteData.notes.transform, NotesObj[NotesObj.Count - 1]);
+                        LongNotesCreate(NotesObj[NotesObj.Count - 1].transform, longnoteData.notes.transform, longnoteData.notes);
                     }
                     else
                     {
                         // 2個以上は1つ前のノーツ情報を取得するため j - 1 で指定している
-                        LongNotesCreate(NoteDataAll[NoteDataAll.Count - 1].longNotes[j - 1].notes.transform, longnoteData.notes.transform, NotesObj[NotesObj.Count - 1]);
+                        LongNotesCreate(NoteDataAll[NoteDataAll.Count - 1].longNotes[j - 1].notes.transform, longnoteData.notes.transform, longnoteData.notes);
                     }
                 }
                 

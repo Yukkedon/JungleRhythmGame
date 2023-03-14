@@ -184,7 +184,8 @@ public class HitJudge : MonoBehaviour
 
         if (longNoteDataList.Count != 0)
         {
-            foreach(NoteData note in longNoteDataList)
+            
+            foreach (NoteData note in longNoteDataList)
             {
                 UpdateLongNotes(note);
             }
@@ -221,6 +222,7 @@ public class HitJudge : MonoBehaviour
         // ƒƒ“ƒOƒm[ƒc‚Å‚ ‚éê‡‚Í‚·‚×‚Äíœ‚µ‚È‚¢
         if (!isLong && timeLag <= BadSecond)
         {
+            
             DeleteData(offset);
         }
         else if (isLong && timeLag <= BadSecond)
@@ -235,9 +237,9 @@ public class HitJudge : MonoBehaviour
     void UpdateLongNotes(NoteData notedata)
     {
         
-        foreach(LongNoteData note in notedata.longNotes)
+        foreach (LongNoteData note in notedata.longNotes)
         {
-            Debug.Log(notedata.type);
+            
             if (notedata.longNotes.Count == 1)
             {
 
@@ -261,7 +263,7 @@ public class HitJudge : MonoBehaviour
 
     void DeleteData(int offset)
     {
-        if (notesManager.NoteDataAll[offset].longNotes != null)
+/*        if (notesManager.NoteDataAll[offset].longNotes != null)
         {
             foreach(LongNoteData notes in notesManager.NoteDataAll[offset].longNotes)
             {
@@ -269,7 +271,7 @@ public class HitJudge : MonoBehaviour
                 Destroy(notes.notes);
             }
         }
-
+*/
         notesManager.NoteDataAll.RemoveAt(offset);
         Destroy(notesManager.NotesObj[offset]);
         notesManager.NotesObj.RemoveAt(offset);
