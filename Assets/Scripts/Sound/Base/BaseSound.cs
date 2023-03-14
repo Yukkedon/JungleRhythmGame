@@ -67,4 +67,18 @@ public class BaseSound : MonoBehaviour
             Destroy(this);*/
     }
 
+    /// <summary>
+    /// 曲名取得用関数
+    /// </summary>
+    /// <param name="i">リストの要素数</param>
+    /// <returns></returns>
+    public string GetBgmClipName(int i)
+    {
+        return bgmClip[i].name;
+    }
+
+    public List<AudioClip> GetbgmClip()
+    {
+        return bgmClip;
+    }
 }
