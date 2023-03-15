@@ -109,7 +109,7 @@ public class NotesManager : MonoBehaviour
 
         Addressables.Release(json);
 
-        noteNum = jsonData["pokemon"].Count;
+        noteNum = jsonData["notes"].Count;
 
         string BPM = jsonData["BPM"].ToString();
         string OFFSET = jsonData["offset"].ToString();

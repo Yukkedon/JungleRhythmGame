@@ -17,12 +17,10 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 796d13092de5846418a0440e7c563ad9
   m_SerializeEntries:
-  - m_GUID: 0ed3008f60b3d5242a75e3607f9a0235
-    m_Address: Assets/Resource/CutMusic/cGurennoYumiya.wav
+  - m_GUID: 1141a2fee96b46646a19cac694698274
+    m_Address: Assets/Resource/CutMusic/GiveAReason.wav
     m_ReadOnly: 0
-    m_SerializedLabels:
-    - SelectCutMuisc
-    - SelectMusic
+    m_SerializedLabels: []
   - m_GUID: 808e94d71898702409b394e885c5dca6
     m_Address: Assets/Resource/Musics/Manimani.wav
     m_ReadOnly: 0

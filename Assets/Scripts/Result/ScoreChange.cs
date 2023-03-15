@@ -18,11 +18,10 @@ public class ScoreChange : MonoBehaviour
     void Start()
     {
         point.text      = "SCORE:"  + GameManager.Instance.point.ToString("d5");
-        perfect.text    = "PERFECT:"+ GameManager.Instance.perfect.ToString("d5"); ;
-        great.text      = "GREAT:"  + GameManager.Instance.great.ToString("d5"); ;
-        bad.text        = "BAD:"    + GameManager.Instance.bad.ToString("d5"); ;
-        miss.text       = "MISS:"   + GameManager.Instance.miss.ToString("d5"); ;
-        rating.text     = "";
+        perfect.text    = "PERFECT:"+ GameManager.Instance.perfect.ToString("d5"); 
+        great.text      = "GREAT:"  + GameManager.Instance.great.ToString("d5"); 
+        bad.text        = "BAD:"    + GameManager.Instance.bad.ToString("d5"); 
+        miss.text       = "MISS:"   + GameManager.Instance.miss.ToString("d5");
 
     }
 
