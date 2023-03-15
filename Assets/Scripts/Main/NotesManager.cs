@@ -25,6 +25,7 @@ public class NoteData
         laneNum = noteData.laneNum;
         LPB = noteData.LPB;
         longNotes = new List<LongNoteData>(noteData.longNotes);
+
     }
 
     public NoteData(int type,float time,int laneNum,float LPB) 
@@ -93,14 +94,14 @@ public class NotesManager : MonoBehaviour
     void Start()
     {
         noteNum = 0;
-        Load(mainManager.songName);
-
+        Load(GameManager.Instance.songName);
+        GameManager.Instance.MAX_COMBO = noteNum;
     }
 
     private void Load(string SongName)
     {
         AsyncOperationHandle json;
-        json = Addressables.LoadAssetAsync<TextAsset>($"Assets/Resource/Scores/{mainManager.songName}.json");
+        json = Addressables.LoadAssetAsync<TextAsset>($"Assets/Resource/Scores/{GameManager.Instance.songName}.json");
         var scoreLoad = json.WaitForCompletion();
 
         TextAsset score = json.Result as TextAsset;
@@ -108,7 +109,7 @@ public class NotesManager : MonoBehaviour
 
         Addressables.Release(json);
 
-        noteNum = jsonData["notes"].Count;
+        noteNum = jsonData["pokemon"].Count;
 
         string BPM = jsonData["BPM"].ToString();
         string OFFSET = jsonData["offset"].ToString();

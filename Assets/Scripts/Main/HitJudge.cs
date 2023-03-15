@@ -19,6 +19,8 @@ public class HitJudge : MonoBehaviour
     [SerializeField] TextMeshProUGUI comboText;
     [SerializeField] TextMeshProUGUI scoreText;
 
+    [SerializeField] GameObject hitEffect;
+
 
     [SerializeField] float PerfectSecond= 0.10f;
     [SerializeField] float GreatSecond  = 0.15f;
@@ -58,7 +60,7 @@ public class HitJudge : MonoBehaviour
                         CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NoteDataAll[0].time + mainManager.startTime)), 0);
                     }
                 }
-                else
+                else if (notesManager.NoteDataAll.Count != 1)
                 {
                     if (notesManager.NoteDataAll[1].laneNum == 0)
                     {
@@ -92,7 +94,7 @@ public class HitJudge : MonoBehaviour
                         CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NoteDataAll[0].time + mainManager.startTime)), 0);
                     }
                 }
-                else
+                else if (notesManager.NoteDataAll.Count != 1)
                 {
                     if (notesManager.NoteDataAll[1].laneNum == 1)
                     {
@@ -126,7 +128,7 @@ public class HitJudge : MonoBehaviour
                         CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NoteDataAll[0].time + mainManager.startTime)), 0);
                     }
                 }
-                else
+                else if (notesManager.NoteDataAll.Count != 1)
                 {
                     if (notesManager.NoteDataAll[1].laneNum == 2)
                     {
@@ -160,7 +162,7 @@ public class HitJudge : MonoBehaviour
                         CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NoteDataAll[0].time + mainManager.startTime)), 0);
                     }
                 }
-                else
+                else if (notesManager.NoteDataAll.Count != 1)
                 {
                     if (notesManager.NoteDataAll[1].laneNum == 3)
                     {
@@ -200,10 +202,14 @@ public class HitJudge : MonoBehaviour
                 
             }
 
-            for (int i = longNoteDataList.Count - 1; i > 0; i--)
+            for (int i = longNoteDataList.Count - 1; i >= 0; i--)
             {
                 if (longNoteDataList[i].isEnd)
                 {
+                    foreach(LongNoteData longnote in longNoteDataList[i].longNotes)
+                    {
+                        Destroy(longnote.notes);
+                    }
                     longNoteDataList.RemoveAt(i);
                 }
             }
@@ -265,6 +271,7 @@ public class HitJudge : MonoBehaviour
                     {
                         PopupJudgeLongMsg(0, notedata.longNotes[i].laneNum);
                         notedata.longNotes[i].passnext = true;
+                        soundMain.PlaySE((int)SoundMain.SE.Touch);
                     }
                 }
             }
@@ -292,7 +299,15 @@ public class HitJudge : MonoBehaviour
                             mainManager.ResetCombo();
                             mainManager.AddJudgeCount(2);
                         }
+                        else if ((Mathf.Abs(Time.time - (notedata.longNotes[i].time + mainManager.startTime)) <= MissSecond))
+                        {
+                            PopupJudgeMsg(3, notedata.longNotes[i].laneNum);
+                            mainManager.ResetCombo();
+                            mainManager.AddJudgeCount(3);
+                        }
+                        soundMain.PlaySE((int)SoundMain.SE.Touch);
                         notedata.isEnd = true;
+                        Debug.Log(notedata.isEnd);
                     }
                 }
             }
@@ -311,15 +326,7 @@ public class HitJudge : MonoBehaviour
 
     void DeleteData(int offset)
     {
-/*        if (notesManager.NoteDataAll[offset].longNotes != null)
-        {
-            foreach(LongNoteData notes in notesManager.NoteDataAll[offset].longNotes)
-            {
-                Debug.Log(notes.ToString());
-                Destroy(notes.notes);
-            }
-        }
-*/
+
         notesManager.NoteDataAll.RemoveAt(offset);
         Destroy(notesManager.NotesObj[offset]);
         notesManager.NotesObj.RemoveAt(offset);
@@ -339,6 +346,11 @@ public class HitJudge : MonoBehaviour
     {
         // Instanceの削除処理はオブジェクトに記述
         Instantiate(JudgeMsgObj[judge], new Vector3(notesManager.NoteDataAll[offset].laneNum - 1.5f, 0.76f, 0.15f), Quaternion.Euler(45, 0, 0));
+
+        if (judge != 3)
+        {
+            Instantiate(hitEffect, new Vector3(notesManager.NoteDataAll[offset].laneNum - 1.5f, 0.6f, 0f), Quaternion.Euler(90, 0, 0));
+        }
     }
     void PopupJudgeLongMsg(int judge,int laneNum)
     {

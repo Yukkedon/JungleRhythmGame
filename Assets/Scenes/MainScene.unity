@@ -1000,6 +1000,7 @@ MonoBehaviour:
   soundMain: {fileID: 915999591}
   comboText: {fileID: 1757894761}
   scoreText: {fileID: 1171697888}
+  hitEffect: {fileID: 8105984571649891337, guid: cec48156ae0063341b69f7ed9bf384f6, type: 3}
   PerfectSecond: 0.1
   GreatSecond: 0.15
   BadSecond: 0.2
@@ -2757,6 +2758,60 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1712857847
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1712857849}
+  - component: {fileID: 1712857848}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1712857848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1712857847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9d5bee828f12d347be9c5ecb7ff8c07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  songName: GurennoYumiya
+  MAX_RAITO_POINT: 5
+  MAX_DIGIT_POINT: 1000000
+  PERFECT_POINT: 5
+  MAX_COMBO: 0
+  point: 0
+  combo: 0
+  perfect: 0
+  great: 0
+  bad: 0
+  miss: 0
+--- !u!4 &1712857849
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1712857847}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1742060044
 GameObject:
   m_ObjectHideFlags: 0
