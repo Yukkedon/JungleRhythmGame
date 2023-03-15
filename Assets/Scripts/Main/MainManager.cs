@@ -9,13 +9,11 @@ public class MainManager : MonoBehaviour
 
     [SerializeField] SoundMain soundMain;
 
-    public string songName = "GurennoYumiya";
+    public string songName;
 
     public int MAX_RAITO_POINT = 5;
     public int MAX_DIGIT_POINT = 1000000;
     public int PERFECT_POINT   = 5;
-
-
 
     public bool isStart      = false;
     public bool isEnd        = false;
@@ -36,13 +34,29 @@ public class MainManager : MonoBehaviour
         this.startTime = startTime;
     }
 
+    public void Start()
+    {
+        songName = GameManager.Instance.songName;
+    }
+
     public void Update()
     {
         if (soundMain == null && isStart && isEnd) return;  // AudioSource‚ªÁ‚¦‚½ó‘Ô‚Å‚àQÆ‚µ‚Ä‚µ‚Ü‚¤‚½‚ßNull”»’è‚ğ’Ç‰Á
         if (soundMain.IsCheckEndBGM() && isStart && isEnd)
         {
+            SetGameManagerScore();
             SceneManager.LoadScene("ResultScene");
         }
+    }
+
+    public void SetGameManagerScore()
+    {
+        GameManager.Instance.point  = point;
+        GameManager.Instance.combo  = combo;
+        GameManager.Instance.perfect= perfect;
+        GameManager.Instance.great  = great;
+        GameManager.Instance.bad    = bad;
+        GameManager.Instance.miss   = miss;
     }
 
     public void ResetCombo()
