@@ -15,15 +15,9 @@ public class GameManager : MonoBehaviour
     public int MAX_DIGIT_POINT = 1000000;
     public int PERFECT_POINT = 5;
 
+    public int MAX_COMBO = 0;
 
-
-    public bool isStart = false;
-    public bool isEnd = false;
-    public float startTime = 0;   // スタートボタンを押すまでの秒数を保存
-    public float playerScore = 0;
-    public float maxScore = 0;
     public int point = 0;
-
     public int combo = 0;
 
     public int perfect = 0;
@@ -48,12 +42,15 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Debug.Log(songName);
-        Debug.Log(perfect);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            Debug.Log(perfect);
+        }
     }
 }

@@ -21,7 +21,7 @@ MonoBehaviour:
     m_Address: Assets/Resource/Musics/GurennoYumiya.wav
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 412ab69e3d03e664ea0730a5906c99f0
+  - m_GUID: 9f8b09f6e03d70e4e978ab3847641202
     m_Address: Assets/Resource/Scores/GurennoYumiya.json
     m_ReadOnly: 0
     m_SerializedLabels: []
@@ -43,6 +43,58 @@ MonoBehaviour:
     m_SerializedLabels: []
   - m_GUID: ee7a4bbf9c4e238458269194a616c771
     m_Address: Assets/Resource/Scores/WelcomeToTheJungleShort.json
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7cfc38ab67400ed4fa345f24c4684e83
+    m_Address: Assets/Resource/Scores/GiveAReason.json
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c526e81a404882042bb44a26319de147
+    m_Address: Assets/Resource/Scores/JungleKurobeShort.json
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d8ce5e94b9420c142be8ee8573efc9cb
+    m_Address: Assets/Resource/Scores/LupinTheThird.json
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e155066ae6686d14db6c60c749e3fb8d
+    m_Address: Assets/Resource/Scores/MaxHeart.json
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f6fd05b68ec2d314192ab4186e015358
+    m_Address: Assets/Resource/Scores/MidnightDekarengerShort.json
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ce113eed895662841a841805f648f01d
+    m_Address: Assets/Resource/Scores/Stranded In The JungleShort.json
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 123473ee76858a847af2f3d55c540d62
+    m_Address: Assets/Resource/Musics/GiveAReason.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 22d3629704c8a71488e890154c171a48
+    m_Address: Assets/Resource/Musics/LupinTheThird.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a092e2a43323a8542a0bc05f35e4a19a
+    m_Address: Assets/Resource/Musics/MaxHeart.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b531c537eddeed7478321c46a43f42b5
+    m_Address: Assets/Resource/Musics/MidnightDekarengerShort.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 22fd6f6c99b48d34e9214b01e4a896a1
+    m_Address: Assets/Resource/Musics/Stranded In The JungleShort.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 224bc98126ba335418c3a121a199c3de
+    m_Address: Assets/Resource/Musics/JungleKurobeShort.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: bc3ca0a0675e92144a5daa0659ab6767
+    m_Address: Assets/Resource/Musics/PokemonMaster.wav
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

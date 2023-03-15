@@ -1000,6 +1000,7 @@ MonoBehaviour:
   soundMain: {fileID: 915999591}
   comboText: {fileID: 1757894761}
   scoreText: {fileID: 1171697888}
+  hitEffect: {fileID: 8105984571649891337, guid: cec48156ae0063341b69f7ed9bf384f6, type: 3}
   PerfectSecond: 0.1
   GreatSecond: 0.15
   BadSecond: 0.2
@@ -2790,12 +2791,13 @@ MonoBehaviour:
   MAX_RAITO_POINT: 5
   MAX_DIGIT_POINT: 1000000
   PERFECT_POINT: 5
-  isStart: 0
-  isEnd: 0
-  startTime: 0
-  playerScore: 0
-  maxScore: 0
+  MAX_COMBO: 0
   point: 0
+  combo: 0
+  perfect: 0
+  great: 0
+  bad: 0
+  miss: 0
 --- !u!4 &1712857849
 Transform:
   m_ObjectHideFlags: 0

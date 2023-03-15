@@ -95,7 +95,7 @@ public class NotesManager : MonoBehaviour
     {
         noteNum = 0;
         Load(GameManager.Instance.songName);
-
+        GameManager.Instance.MAX_COMBO = noteNum;
     }
 
     private void Load(string SongName)
@@ -109,7 +109,7 @@ public class NotesManager : MonoBehaviour
 
         Addressables.Release(json);
 
-        noteNum = jsonData["notes"].Count;
+        noteNum = jsonData["pokemon"].Count;
 
         string BPM = jsonData["BPM"].ToString();
         string OFFSET = jsonData["offset"].ToString();

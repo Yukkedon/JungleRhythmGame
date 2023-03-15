@@ -19,6 +19,8 @@ public class HitJudge : MonoBehaviour
     [SerializeField] TextMeshProUGUI comboText;
     [SerializeField] TextMeshProUGUI scoreText;
 
+    [SerializeField] GameObject hitEffect;
+
 
     [SerializeField] float PerfectSecond= 0.10f;
     [SerializeField] float GreatSecond  = 0.15f;
@@ -344,6 +346,11 @@ public class HitJudge : MonoBehaviour
     {
         // Instanceの削除処理はオブジェクトに記述
         Instantiate(JudgeMsgObj[judge], new Vector3(notesManager.NoteDataAll[offset].laneNum - 1.5f, 0.76f, 0.15f), Quaternion.Euler(45, 0, 0));
+
+        if (judge != 3)
+        {
+            Instantiate(hitEffect, new Vector3(notesManager.NoteDataAll[offset].laneNum - 1.5f, 0.6f, 0f), Quaternion.Euler(90, 0, 0));
+        }
     }
     void PopupJudgeLongMsg(int judge,int laneNum)
     {
