@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -392,7 +392,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -39.112}
+  m_AnchoredPosition: {x: 0, y: -63.5}
   m_SizeDelta: {x: 165.965, y: 31.522}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &993868614
@@ -459,7 +459,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cfa1940daf8703f42863c16c1ff97f86, type: 3}
+  m_Sprite: {fileID: 21300000, guid: add7b93824eda6048a8a24612f2d3eb0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -622,7 +622,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b9a57faca1e1ec47a961156fbc3cb73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
   tapText: {fileID: 993868612}
   titleLogo: {fileID: 2111433179}
 --- !u!1 &1938381443
@@ -765,7 +764,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 564ee1e41ffdc934ca90bbe9adf70d60, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 475f60699d426c84581d6e1e663ee227, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
