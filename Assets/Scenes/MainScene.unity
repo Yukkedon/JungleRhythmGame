@@ -882,6 +882,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   noteNum: 0
   mainManager: {fileID: 544927279}
+  NotesLineMaterial: {fileID: 2100000, guid: 6e176e5c526493e48a350e6edbaf1743, type: 2}
   NotesObj: []
   NotesSpeed: 7
   noteObj: {fileID: 6956675484662243556, guid: 71af1877905650a4483e4719c74f16a1, type: 3}
@@ -991,10 +992,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainManager: {fileID: 544927279}
   JudgeMsgObj:
-  - {fileID: 9067733942104537841, guid: 1f8d763129e462745a0f712f947cd297, type: 3}
-  - {fileID: 8310219278010053322, guid: fbd5809e2f4832e4d94b06fb78d4bb9a, type: 3}
-  - {fileID: 1565379036286721188, guid: 9a87d263e6929734ab603fd8d201847d, type: 3}
-  - {fileID: 23567584609652709, guid: 6625fb37ca19e0c458605d5ebacae720, type: 3}
+  - {fileID: 8255549169200763825, guid: be942b16831b6474d8b6e0cb2a8b8271, type: 3}
+  - {fileID: 609436430595042738, guid: 28da238ad0ee163428d0d24750ae6e69, type: 3}
+  - {fileID: 3540987612317056623, guid: f92358cb1260bfa4b98f85eb51ded5cb, type: 3}
+  - {fileID: 4393485517452040244, guid: 92d345e74474fc3419816bec673b1c72, type: 3}
   notesManager: {fileID: 460355682}
   soundMain: {fileID: 915999591}
   comboText: {fileID: 1757894761}
@@ -1047,7 +1048,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundMain: {fileID: 915999591}
-  songName: O-gear-gonna-groove
+  songName: GurennoYumiya
   MAX_RAITO_POINT: 5
   MAX_DIGIT_POINT: 1000000
   PERFECT_POINT: 5
@@ -2240,8 +2241,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 104.2, y: -31.8}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 109.9, y: -31.7459}
+  m_SizeDelta: {x: 202.8293, y: 63.492}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1171697888
 MonoBehaviour:
@@ -2263,10 +2264,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Score:999999
+  m_text: 'Score:'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 28cb2eb92af46994b99dd98e3072dcb1, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 3493d1c37764c49488864b258ff04ad0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2274,13 +2275,13 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
+  m_enableVertexGradient: 1
+  m_colorMode: 2
   m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+    topLeft: {r: 1, g: 0, b: 0.16320229, a: 1}
+    topRight: {r: 1, g: 0, b: 0.16320229, a: 1}
+    bottomLeft: {r: 0.21076608, g: 1, b: 0, a: 1}
+    bottomRight: {r: 0.21076608, g: 1, b: 0, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
@@ -2290,15 +2291,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 18
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -2326,7 +2327,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -32.23813, w: 0}
+  m_margin: {x: -0.0000076293945, y: -1.4624939, z: -65.54999, w: -1.9351959}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2865,8 +2866,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -104.9, y: -28}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -107.4, y: -55.763}
+  m_SizeDelta: {x: 164.0872, y: 106.47}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1757894761
 MonoBehaviour:
@@ -2892,8 +2893,8 @@ MonoBehaviour:
 
     999'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 28cb2eb92af46994b99dd98e3072dcb1, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 3493d1c37764c49488864b258ff04ad0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2901,13 +2902,13 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
+  m_enableVertexGradient: 1
+  m_colorMode: 1
   m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+    topLeft: {r: 0.067723274, g: 1, b: 0, a: 1}
+    topRight: {r: 0.8018868, g: 0.8014144, b: 0.45768067, a: 1}
+    bottomLeft: {r: 0.067723274, g: 1, b: 0, a: 1}
+    bottomRight: {r: 0.8018868, g: 0.8014144, b: 0.45768067, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
@@ -2917,15 +2918,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_fontStyle: 18
+  m_HorizontalAlignment: 4
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -2953,7 +2954,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 45.46173, y: 0, z: 0, w: -33.729645}
+  m_margin: {x: -1.6131592, y: 0, z: -17.721283, w: 23.997742}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

@@ -25,7 +25,7 @@ public class SoundMain : BaseSound
         {
             mainManager.isStart = true;
             mainManager.SetStartTime(Time.time);
-            Debug.Log(mainManager.startTime);
+            
             PlayBGM();
         }
 
