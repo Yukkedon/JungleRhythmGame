@@ -158,9 +158,9 @@ RectTransform:
   - {fileID: 918598065}
   - {fileID: 3159227061939426145}
   - {fileID: 4216678183662157846}
-  - {fileID: 260299207}
   - {fileID: 700599493}
   - {fileID: 2112152556}
+  - {fileID: 260299207}
   m_Father: {fileID: 765701001}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -880,7 +880,7 @@ RectTransform:
   m_Children:
   - {fileID: 1693162326}
   m_Father: {fileID: 27330668}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -2140,6 +2140,7 @@ MonoBehaviour:
   nobutton: {fileID: 463959453}
   closebutton: {fileID: 1745658015}
   panel: {fileID: 2112152555}
+  soundSelect: {fileID: 1895622568}
 --- !u!114 &1807334000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2317,10 +2318,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e8c2145b41980b439f96335b1854181, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bgmSource: {fileID: 0}
+  bgmSource: {fileID: 1895622570}
   bgmClip: []
-  seSuorce: {fileID: 0}
-  seClip: []
+  seSuorce: {fileID: 1895622569}
+  seClip:
+  - {fileID: 8300000, guid: e0d7f9ef756820f4bbbeaa3a206e1336, type: 3}
+  - {fileID: 8300000, guid: b52fb5b8f06cac74caa9840d6da53346, type: 3}
 --- !u!82 &1895622569
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2632,7 +2635,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 27330668}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -3024,7 +3027,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5491773252348672256, guid: 0a81a64b16eddc044a9b2cbde11193a3, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5491773252348672256, guid: 0a81a64b16eddc044a9b2cbde11193a3, type: 3}
       propertyPath: m_AnchorMax.x

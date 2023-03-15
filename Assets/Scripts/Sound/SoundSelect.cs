@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class SoundSelect : BaseSound
 {
+    public static SoundSelect instance;
+    public enum SE
+    {
+        Select,
+        Cansel,
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +20,10 @@ public class SoundSelect : BaseSound
     void Update()
     {
         
+    }
+
+    public void PlaySe()
+    {
+        PlaySE((int)SoundSelect.SE.Select);
     }
 }

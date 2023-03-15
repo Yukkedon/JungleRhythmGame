@@ -17,6 +17,7 @@ public class SelectManager : MonoBehaviour
 
     [SerializeField] GameObject panel;
     //[SerializeField] GameObject fade;
+    [SerializeField] SoundSelect soundSelect;
 
     /// <summary>
     /// �J�n����
@@ -42,6 +43,9 @@ public class SelectManager : MonoBehaviour
     /// </summary>
     private void OnClickCloseButton()
     {
+        // タイトルBGMの再生
+        soundSelect.PlaySE((int)SoundSelect.SE.Cansel);
+
         panel.SetActive(false);
         // �I�v�V�����E�B���h�E�����񂾂񏬂���
         buttonPanel.transform.DOScale(Vector3.zero, 0.2f);
@@ -59,6 +63,9 @@ public class SelectManager : MonoBehaviour
     /// </summary>
     public void OnClickSelectMusic()
     {
+        // タイトルBGMの再生
+        soundSelect.PlaySE((int)SoundSelect.SE.Select);
+
         panel.SetActive(true);
 
         // �{�^���p�l����\��
@@ -73,7 +80,8 @@ public class SelectManager : MonoBehaviour
     /// </summary>
     private void OnClickYesButton()
     {
-
+        // タイトルBGMの再生
+        soundSelect.PlaySE((int)SoundSelect.SE.Select);
         // �t�F�[�h����
         // �����ɏ���
         //fade.GetComponent<Fade>().FadeIn(1f, () =>SceneManager.LoadScene("MainScene"));
