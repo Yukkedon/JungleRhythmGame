@@ -21,9 +21,4 @@ public class SoundSelect : BaseSound
     {
         
     }
-
-    public void PlaySe()
-    {
-        PlaySE((int)SoundSelect.SE.Select);
-    }
 }
