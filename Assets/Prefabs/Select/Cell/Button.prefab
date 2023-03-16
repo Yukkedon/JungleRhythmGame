@@ -149,8 +149,9 @@ GameObject:
   - component: {fileID: 983345215988402632}
   - component: {fileID: 94615918929035406}
   - component: {fileID: 5642196809739230576}
-  - component: {fileID: 5231898641590831340}
-  - component: {fileID: 2826201615832634589}
+  - component: {fileID: 5296391741434860542}
+  - component: {fileID: 1400431252089573649}
+  - component: {fileID: 2723643973935152180}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -261,8 +262,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SelectManager, Assembly-CSharp
-        m_MethodName: OnClickSelectMusic
+        m_TargetAssemblyTypeName: CellMusic, Assembly-CSharp
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -319,12 +320,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62c6ba2e04176f041aafc9c15cab9820, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bgmSource: {fileID: 5231898641590831340}
+  bgmSource: {fileID: 5296391741434860542}
   bgmClip: []
-  seSuorce: {fileID: 2826201615832634589}
+  seSuorce: {fileID: 1400431252089573649}
   seClip:
   - {fileID: 8300000, guid: e0d7f9ef756820f4bbbeaa3a206e1336, type: 3}
---- !u!82 &5231898641590831340
+  jsonKey: []
+  scrollview: {fileID: 0}
+  buttonText: {fileID: 5491773251940673244}
+--- !u!82 &5296391741434860542
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -420,7 +424,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &2826201615832634589
+--- !u!82 &1400431252089573649
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -516,3 +520,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2723643973935152180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5491773252348672257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3008d43f4a953b5459a492fc050fea55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

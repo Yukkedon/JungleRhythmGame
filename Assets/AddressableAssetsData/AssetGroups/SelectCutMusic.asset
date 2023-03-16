@@ -20,9 +20,60 @@ MonoBehaviour:
   - m_GUID: 1141a2fee96b46646a19cac694698274
     m_Address: Assets/Resource/CutMusic/GiveAReason.wav
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - SelectMusic
   - m_GUID: 808e94d71898702409b394e885c5dca6
     m_Address: Assets/Resource/Musics/Manimani.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SelectMusic
+  - m_GUID: c44edf35171233a429d7d85b3067d6a8
+    m_Address: Assets/Resource/CutMusic/Stranded In The JungleShort.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SelectMusic
+  - m_GUID: 7361a65127fab90469eff6cfcbdbe1bc
+    m_Address: Assets/Resource/CutMusic/Welcome To The JungleShort.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SelectMusic
+  - m_GUID: 2a01b1917af336b4884ff804dd027152
+    m_Address: Assets/Resource/CutMusic/PokemonMaster.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SelectMusic
+  - m_GUID: 9698514c7820c2248bfb7ecd2f54a71e
+    m_Address: Assets/Resource/CutMusic/O-gear-gonna-groove.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SelectMusic
+  - m_GUID: e2c7ecffec748a647a8c79c2b11f5179
+    m_Address: Assets/Resource/CutMusic/MidnightDekarengerShort.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SelectMusic
+  - m_GUID: 2b581ab9bbf3d1d4bac3c8829a2c3884
+    m_Address: Assets/Resource/CutMusic/MaxHeart.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SelectMusic
+  - m_GUID: e0cbedc93e909bd4fb903c96f7f01515
+    m_Address: Assets/Resource/CutMusic/Manimani.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SelectMusic
+  - m_GUID: 5b456a5189063d54782069e70375987e
+    m_Address: Assets/Resource/CutMusic/LupinTheThird.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SelectMusic
+  - m_GUID: ad1edb2dd1f8b94489f394b9e0ddda56
+    m_Address: Assets/Resource/CutMusic/JungleKurobeShort.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SelectMusic
+  - m_GUID: b15c0d81d10cb014197c473b66a0fb5c
+    m_Address: Assets/Resource/CutMusic/GurennoYumiya.wav
     m_ReadOnly: 0
     m_SerializedLabels:
     - SelectMusic
