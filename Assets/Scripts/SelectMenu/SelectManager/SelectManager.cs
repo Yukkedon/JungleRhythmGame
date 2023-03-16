@@ -63,6 +63,8 @@ public class SelectManager : MonoBehaviour
     /// </summary>
     public void OnClickSelectMusic()
     {
+        // ここでゲームマネージャに値を渡す
+        GameManager.Instance.GetComponent<GameManager>().songName = "GurennoYumiya";
         // タイトルBGMの再生
         soundSelect.PlaySE((int)SoundSelect.SE.Select);
 

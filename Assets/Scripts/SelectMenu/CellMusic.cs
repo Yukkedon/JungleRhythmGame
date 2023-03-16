@@ -1,16 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.SceneManagement;
+using LitJson;
 
-public class CellMusic : BaseSound
+public class CellMusic : SelectViewer
 {
+    [SerializeField] TextMeshProUGUI buttonText;
+
+    GameManager gameManager;
+    private void Start()
+    {
+        // gameManager.GetComponent<GameManager>();
+
+       
+    }
+
+    private void Load()
+    {
+      
+    }
+
     public enum SE
     {
-        Select,
+        SElect,
     }
+
+ 
 
     public void PlaySe()
     {
-        PlaySE((int)SoundSelect.SE.Select);
+        PlaySE((int)SE.SElect);
     }
+ 
+  
+
 }

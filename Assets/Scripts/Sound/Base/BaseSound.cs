@@ -10,7 +10,7 @@ public class BaseSound : MonoBehaviour
 
     protected AsyncOperationHandle snd;
     [SerializeField] AudioSource bgmSource;
-    [SerializeField] List<AudioClip> bgmClip;
+    public List<AudioClip> bgmClip;
 
     [SerializeField] AudioSource seSuorce;
     [SerializeField] List<AudioClip> seClip;
@@ -25,7 +25,7 @@ public class BaseSound : MonoBehaviour
                  foreach (var clip in snd.Result)
                  {
                     bgmClip.Add((AudioClip)clip);
-                    Debug.Log(clip.name);
+                    Debug.Log("clipは"+clip.name);
                  }
                 Addressables.Release(snd);
              };
@@ -67,18 +67,5 @@ public class BaseSound : MonoBehaviour
             Destroy(this);*/
     }
 
-    /// <summary>
-    /// 曲名取得用関数
-    /// </summary>
-    /// <param name="i">リストの要素数</param>
-    /// <returns></returns>
-    public string GetBgmClipName(int i)
-    {
-        return bgmClip[i].name;
-    }
-
-    public List<AudioClip> GetbgmClip()
-    {
-        return bgmClip;
-    }
+   
 }

@@ -221,7 +221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellInterval: 0.2
   scrollOffset: 0.5
-  loop: 1
+  loop: 0
   cellContainer: {fileID: 918598065}
   _scroller: {fileID: 27330672}
   _cellPrefab: {fileID: 260299206}
@@ -239,7 +239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   viewport: {fileID: 27330668}
   scrollDirection: 1
-  movementType: 0
+  movementType: 2
   elasticity: 0.1
   scrollSensitivity: 7
   inertia: 1
@@ -1252,9 +1252,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bgmSource: {fileID: 765701004}
   bgmClip: []
-  seSuorce: {fileID: 765701004}
-  seClip: []
+  seSuorce: {fileID: 765701003}
+  seClip:
+  - {fileID: 8300000, guid: e0d7f9ef756820f4bbbeaa3a206e1336, type: 3}
+  jsonKey: []
   scrollview: {fileID: 27330671}
+  soundSelect: {fileID: 0}
 --- !u!82 &765701003
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1778,6 +1781,60 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1590899532
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1590899534}
+  - component: {fileID: 1590899533}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1590899533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1590899532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9d5bee828f12d347be9c5ecb7ff8c07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  songName: GurennoYumiya
+  MAX_RAITO_POINT: 5
+  MAX_DIGIT_POINT: 1000000
+  PERFECT_POINT: 5
+  MAX_COMBO: 0
+  point: 0
+  combo: 0
+  perfect: 0
+  great: 0
+  bad: 0
+  miss: 0
+--- !u!4 &1590899534
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1590899532}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1693162323
 GameObject:
   m_ObjectHideFlags: 0
@@ -2081,7 +2138,6 @@ GameObject:
   - component: {fileID: 1807333998}
   - component: {fileID: 1807333997}
   - component: {fileID: 1807333999}
-  - component: {fileID: 1807334000}
   m_Layer: 0
   m_Name: SelectManager
   m_TagString: Untagged
@@ -2141,18 +2197,6 @@ MonoBehaviour:
   closebutton: {fileID: 1745658015}
   panel: {fileID: 2112152555}
   soundSelect: {fileID: 1895622568}
---- !u!114 &1807334000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1807333996}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18d3e7ea4faf0e42bea617a68c235d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1846392833
 GameObject:
   m_ObjectHideFlags: 0
@@ -2814,8 +2858,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteImage:
-  - {fileID: 21300000, guid: 25725e7126e260b4e91a3c0c3ed6fb86, type: 3}
-  - {fileID: 21300000, guid: d7bd11b2c179f0346a3f78192ff640db, type: 3}
+  - {fileID: 21300000, guid: 0af075bc35723e7478300098eda5b275, type: 3}
+  - {fileID: 21300000, guid: cd57f7cf9cb152b409d10123e1bbf0e7, type: 3}
   speed: 1
   rectTransform: {fileID: 3159227061936361634}
   miniChara: {fileID: 3159227061936361632}
@@ -3105,9 +3149,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button
       objectReference: {fileID: 0}
+    - target: {fileID: 5491773252348672257, guid: 0a81a64b16eddc044a9b2cbde11193a3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5491773252348672271, guid: 0a81a64b16eddc044a9b2cbde11193a3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1807333999}
+    - target: {fileID: 5491773252348672271, guid: 0a81a64b16eddc044a9b2cbde11193a3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnClickSelectMusic
+      objectReference: {fileID: 0}
+    - target: {fileID: 5491773252348672271, guid: 0a81a64b16eddc044a9b2cbde11193a3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SelectManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a81a64b16eddc044a9b2cbde11193a3, type: 3}
