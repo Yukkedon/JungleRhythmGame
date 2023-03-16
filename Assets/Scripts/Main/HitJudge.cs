@@ -67,6 +67,7 @@ public class HitJudge : MonoBehaviour
                             }
                             else
                             {
+                                Debug.Log("toota"+noteTiming);
                                 NoteData tmpNote = new NoteData(notesManager.NoteDataAll[noteTiming]);
                                 longNoteDataList.Add(tmpNote);
                                 CheckHitTiming(Mathf.Abs(Time.time - (notesManager.NoteDataAll[noteTiming].time + mainManager.startTime)), noteTiming);
@@ -107,9 +108,7 @@ public class HitJudge : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log(noteNum);
                     UpdateLongNotes(longNoteDataList[noteNum]);
-
                 }
             }
             for (int i = longNoteDataList.Count - 1; i >= 0; i--)

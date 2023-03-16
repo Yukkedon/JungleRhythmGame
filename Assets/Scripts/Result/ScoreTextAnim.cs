@@ -49,13 +49,26 @@ public class ScoreTextAnim : MonoBehaviour
     /// </summary>
     private void ChangeText()
     {
-        if(isbool==true)
+        if(GameManager.Instance.combo==GameManager.Instance.MAX_COMBO)
         {
-            textMeshPro.text=("Prefect!");
+            textMeshPro.text=("FULL COMBO!");
         }
+        else if (GameManager.Instance.point >= (GameManager.Instance.MAX_COMBO * 0.8) * GameManager.Instance.PERFECT_POINT)
+        {
+            textMeshPro.text = ("Great!");
+        }
+        else if (GameManager.Instance.point >= (GameManager.Instance.MAX_COMBO * 0.6) * GameManager.Instance.PERFECT_POINT)
+        {
+            textMeshPro.text = ("Bad!");
+        }
+        else if (GameManager.Instance.point >= (GameManager.Instance.MAX_COMBO * 0.4) * GameManager.Instance.PERFECT_POINT)
+        {
+            textMeshPro.text = ("Oh My God!");
+        }
+
         else
         {
-            textMeshPro.text=("Bad");
+            textMeshPro.text=("Miss");
         }
     }
 
