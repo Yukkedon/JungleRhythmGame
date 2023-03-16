@@ -51,12 +51,12 @@ public class ScoreTextAnim : MonoBehaviour
     {
         if(isbool==true)
         {
-            textMeshPro.text=("Prefect!");
+            textMeshPro.text=("Full Combo!");
         }
-        else
+        /*else
         {
             textMeshPro.text=("Bad");
-        }
+        }*/
     }
 
     /// <summary>
