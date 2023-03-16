@@ -17,11 +17,11 @@ public class ScoreChange : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        point.text      = "SCORE:"  + GameManager.Instance.point.ToString("d5");
-        perfect.text    = "PERFECT:"+ GameManager.Instance.perfect.ToString("d5"); 
-        great.text      = "GREAT:"  + GameManager.Instance.great.ToString("d5"); 
-        bad.text        = "BAD:"    + GameManager.Instance.bad.ToString("d5"); 
-        miss.text       = "MISS:"   + GameManager.Instance.miss.ToString("d5");
+        point.text      = "SCORE:"  + GameManager.Instance.point.ToString("d4");
+        perfect.text    = "PERFECT:"+ GameManager.Instance.perfect.ToString("d4"); 
+        great.text      = "GREAT:"  + GameManager.Instance.great.ToString("d4"); 
+        bad.text        = "BAD:"    + GameManager.Instance.bad.ToString("d4"); 
+        miss.text       = "MISS:"   + GameManager.Instance.miss.ToString("d4");
 
     }
 

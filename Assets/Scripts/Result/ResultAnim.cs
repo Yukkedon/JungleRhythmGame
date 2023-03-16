@@ -28,7 +28,7 @@ public class ResultAnim : MonoBehaviour
     {
         // 移動するゲームオブジェクトの初期値設定
         scorePanel.transform.localPosition = new Vector3(-260f,-900f,0f);
-        resultTextObject.transform.localPosition = new Vector3(1118f,170f,0f);
+        resultTextObject.transform.localPosition = new Vector3(1118f,165f,0f);
         // 大きさを変更するオブジェクトの初期値設定
         backGround1.transform.localScale = new Vector3(3.5f,3.5f,3.5f);
         backGround2.transform.localScale = new Vector3(3f,3f,3f);
