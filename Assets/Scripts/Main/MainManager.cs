@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,7 +9,7 @@ public class MainManager : MonoBehaviour
 {
 
     [SerializeField] SoundMain soundMain;
-
+    [SerializeField] GameObject comboText;
     public string songName;
 
     public int MAX_RAITO_POINT = 5;
@@ -65,6 +66,7 @@ public class MainManager : MonoBehaviour
     }
     public void AddCombo()
     {
+        ComboAnim();
         combo++;
     }
     public int GetCombo()
@@ -106,4 +108,13 @@ public class MainManager : MonoBehaviour
         
     }
 
+    private void ComboAnim()
+    {
+        comboText.transform.DOPunchScale(new Vector3(1.05f, 1.05f, 1.05f), 0.1f).OnComplete(() => BaseScale());
+    }
+
+    private void BaseScale()
+    {
+        comboText.transform.localScale = Vector3.one;
+    }
 }

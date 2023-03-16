@@ -1049,6 +1049,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundMain: {fileID: 915999591}
+  comboText: {fileID: 1757894759}
   songName: GurennoYumiya
   MAX_RAITO_POINT: 5
   MAX_DIGIT_POINT: 1000000
