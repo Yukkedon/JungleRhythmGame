@@ -2787,7 +2787,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9d5bee828f12d347be9c5ecb7ff8c07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  songName: GurennoYumiya
+  songName: Stranded In The JungleShort
   MAX_RAITO_POINT: 5
   MAX_DIGIT_POINT: 1000000
   PERFECT_POINT: 5
