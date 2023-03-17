@@ -221,7 +221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellInterval: 0.2
   scrollOffset: 0.5
-  loop: 0
+  loop: 1
   cellContainer: {fileID: 918598065}
   _scroller: {fileID: 27330672}
   _cellPrefab: {fileID: 260299206}
@@ -239,7 +239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   viewport: {fileID: 27330668}
   scrollDirection: 1
-  movementType: 2
+  movementType: 0
   elasticity: 0.1
   scrollSensitivity: 7
   inertia: 1
@@ -1258,6 +1258,18 @@ MonoBehaviour:
   jsonKey: []
   scrollview: {fileID: 27330671}
   soundSelect: {fileID: 0}
+  images:
+  - {fileID: 21300000, guid: 0dda230ebef6f7347909d30d2160ad5e, type: 3}
+  - {fileID: 21300000, guid: ec2d64f35f81f684e91719963e49647d, type: 3}
+  - {fileID: 21300000, guid: ad8690affb0ff01469ebf6d29413cd30, type: 3}
+  - {fileID: 21300000, guid: e30877740c075064d863b6d66b4f7c36, type: 3}
+  - {fileID: 21300000, guid: 439bace56e3285444b2ca2950670726d, type: 3}
+  - {fileID: 21300000, guid: 55f27643239eaff45a7918798a1e2f48, type: 3}
+  - {fileID: 21300000, guid: 93e067ca6b5c22c47bfd9672fac02921, type: 3}
+  - {fileID: 21300000, guid: 01e5ebe151552d9408711f485e259b02, type: 3}
+  - {fileID: 21300000, guid: d0190afa5cafab941b0bc0a67f74d6bd, type: 3}
+  - {fileID: 21300000, guid: 2af3f5f396fab8c40aea6d1f8121f58c, type: 3}
+  - {fileID: 21300000, guid: 9bf748856e568de4a833bef881dc2d76, type: 3}
 --- !u!82 &765701003
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2197,6 +2209,20 @@ MonoBehaviour:
   closebutton: {fileID: 1745658015}
   panel: {fileID: 2112152555}
   soundSelect: {fileID: 1895622568}
+  names:
+  - GurennoYumiya
+  - PokemonMaster
+  - GiveAReason
+  - JungleKurobeShort
+  - LupinTheThird
+  - Manimani
+  - MaxHeart
+  - MidnightDekarengerShort
+  - O-gear-gonna-groove
+  - Stranded In The JungleShort
+  - WelcomeToTheJungleShort
+  - JungleKurobeShort
+  eventSystem: {fileID: 995126211}
 --- !u!1 &1846392833
 GameObject:
   m_ObjectHideFlags: 0
@@ -2363,7 +2389,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bgmSource: {fileID: 1895622570}
-  bgmClip: []
+  bgmClip:
+  - {fileID: 8300000, guid: b15c0d81d10cb014197c473b66a0fb5c, type: 3}
+  - {fileID: 8300000, guid: 2a01b1917af336b4884ff804dd027152, type: 3}
+  - {fileID: 8300000, guid: 1141a2fee96b46646a19cac694698274, type: 3}
+  - {fileID: 8300000, guid: ad1edb2dd1f8b94489f394b9e0ddda56, type: 3}
+  - {fileID: 8300000, guid: 5b456a5189063d54782069e70375987e, type: 3}
+  - {fileID: 8300000, guid: e0cbedc93e909bd4fb903c96f7f01515, type: 3}
+  - {fileID: 8300000, guid: 2b581ab9bbf3d1d4bac3c8829a2c3884, type: 3}
+  - {fileID: 8300000, guid: e2c7ecffec748a647a8c79c2b11f5179, type: 3}
+  - {fileID: 8300000, guid: 9698514c7820c2248bfb7ecd2f54a71e, type: 3}
+  - {fileID: 8300000, guid: c44edf35171233a429d7d85b3067d6a8, type: 3}
+  - {fileID: 8300000, guid: 7361a65127fab90469eff6cfcbdbe1bc, type: 3}
   seSuorce: {fileID: 1895622569}
   seClip:
   - {fileID: 8300000, guid: e0d7f9ef756820f4bbbeaa3a206e1336, type: 3}
@@ -2478,7 +2515,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -2970,8 +3007,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteImage:
-  - {fileID: 21300000, guid: d7bd11b2c179f0346a3f78192ff640db, type: 3}
-  - {fileID: 21300000, guid: 25725e7126e260b4e91a3c0c3ed6fb86, type: 3}
+  - {fileID: 21300000, guid: a65c2188a87462249bf46de3e69c0545, type: 3}
+  - {fileID: 21300000, guid: 56ccd383f5cdf894e982c81fca32bfeb, type: 3}
   speed: 1
   rectTransform: {fileID: 4216678183663387605}
   miniChara: {fileID: 4216678183663387607}
