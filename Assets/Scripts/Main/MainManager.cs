@@ -152,6 +152,7 @@ public class MainManager : MonoBehaviour
         
         yield return new  WaitForSeconds(1f);
         GameManager.Instance.isStart = true;
+        SetStartTime(Time.time);
         isStart = true;
         yield break;
     }

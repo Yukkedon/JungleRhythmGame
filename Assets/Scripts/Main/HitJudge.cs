@@ -89,9 +89,8 @@ public class HitJudge : MonoBehaviour
                 if (notesManager.NoteDataAll.Count != 0)
                 {
                     // ƒ~ƒX”»’è
-                    if (Time.time > notesManager.NoteDataAll[notesManager.NoteDataAll.Count - 1].time + MissSecond + mainManager.startTime)
+                    if (Time.time >= (notesManager.NoteDataAll[notesManager.NoteDataAll.Count - 1].time + mainManager.startTime + MissSecond))
                     {
-
                         PopupJudgeMsg(3, notesManager.NoteDataAll.Count - 1);
                         if (notesManager.NoteDataAll[notesManager.NoteDataAll.Count - 1].type == 2)
                         {
