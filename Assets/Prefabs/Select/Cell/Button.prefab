@@ -326,7 +326,7 @@ MonoBehaviour:
   bgmClip: []
   seSuorce: {fileID: 1400431252089573649}
   seClip:
-  - {fileID: 8300000, guid: e0d7f9ef756820f4bbbeaa3a206e1336, type: 3}
+  - {fileID: 8300000, guid: 053d6c2133d7f71468cccc3ee5b30f89, type: 3}
   jsonKey: []
   scrollview: {fileID: 0}
   soundSelect: {fileID: 0}

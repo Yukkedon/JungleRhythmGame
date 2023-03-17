@@ -20,7 +20,10 @@ public class ResultAnim : MonoBehaviour
     [SerializeField] private TextMeshProUGUI resultText;
     // ボタン
     [SerializeField] private GameObject buttons;
-    
+
+    public AudioClip sound1;
+    public AudioClip sound2;
+
     /// <summary>
     /// 開始処理（Startより前に実行）
     /// </summary>
