@@ -8,8 +8,6 @@ public class ScoreTextAnim : MonoBehaviour
 {
     [SerializeField]private TextMeshProUGUI textMeshPro;
 
-    // 仮実装
-    public bool isbool=false;
     
     /// <summary>
     /// 開始処理

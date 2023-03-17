@@ -2403,8 +2403,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7361a65127fab90469eff6cfcbdbe1bc, type: 3}
   seSuorce: {fileID: 1895622569}
   seClip:
-  - {fileID: 8300000, guid: e0d7f9ef756820f4bbbeaa3a206e1336, type: 3}
-  - {fileID: 8300000, guid: b52fb5b8f06cac74caa9840d6da53346, type: 3}
+  - {fileID: 8300000, guid: 493f3644ef951154e80303bf2b7956e5, type: 3}
+  - {fileID: 8300000, guid: 053d6c2133d7f71468cccc3ee5b30f89, type: 3}
 --- !u!82 &1895622569
 AudioSource:
   m_ObjectHideFlags: 0

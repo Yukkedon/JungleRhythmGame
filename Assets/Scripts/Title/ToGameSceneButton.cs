@@ -18,7 +18,10 @@ public class ToGameSceneButton : MonoBehaviour
     // タイトルロゴ
     [Tooltip("タイトルロゴ（ここにアタッチ）")]
     [SerializeField] private GameObject titleLogo;
-    
+
+    public AudioClip sound1;
+    AudioSource audioSource;
+
     /// <summary>
     /// 初期化処理
     /// </summary>
@@ -34,6 +37,8 @@ public class ToGameSceneButton : MonoBehaviour
     /// </summary>
     private void Start()
     {
+        //Componentを取得
+        audioSource = GetComponent<AudioSource>();
         StartCoroutine(TitleLogoAnim());
     }
     /// <summary>
@@ -45,10 +50,12 @@ public class ToGameSceneButton : MonoBehaviour
         tapText.gameObject.GetComponent<Image>().color =
             GetAlphaColor(tapText.gameObject.GetComponent<Image>().color);
         
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0))
         {
+            
             if (tapText.activeSelf)
             {
+                audioSource.PlayOneShot(sound1);
                 StartCoroutine(TapText());
             }
         }
