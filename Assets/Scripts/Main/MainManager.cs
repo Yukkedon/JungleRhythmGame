@@ -9,7 +9,7 @@ using TMPro;
 public class MainManager : MonoBehaviour
 {
 
-    //[SerializeField] TextMeshPro countText;
+    [SerializeField] TextMeshProUGUI countText;
 
     [SerializeField] SoundMain soundMain;
     [SerializeField] GameObject comboText;
@@ -33,6 +33,10 @@ public class MainManager : MonoBehaviour
     int bad = 0;
     int miss = 0;
 
+
+    public bool isAnimStart = false;
+    IEnumerator animCorou = null;
+
     public void SetStartTime(float startTime)
     {
         this.startTime = startTime;
@@ -40,17 +44,29 @@ public class MainManager : MonoBehaviour
 
     public void Start()
     {
+        animCorou = PushSpaceAnim();
         songName = GameManager.Instance.songName;
-        //countText.DOFade(1.0f, 0.0f).SetLoops(1, LoopType.Yoyo).Play();
+        countText.DOFade(0.0f, 1.0f).SetLoops(-1, LoopType.Yoyo).Play();
     }
 
     public void Update()
     {
+        
 
-        if (!isStart && Input.GetKeyDown(KeyCode.Space))
+        if (!isAnimStart && !isStart && Input.GetKeyDown(KeyCode.Space))
         {
+            isAnimStart = true;
+            //StartCoroutine(PushSpaceAnim());
+/*            countText.DOPause();
+            countText.transform.DOLocalRotate(new Vector3(0, 0, 720f), 1f, RotateMode.FastBeyond360);
+            
+            isStart = true;*/
+        }
 
-            isStart = true;
+        if (isAnimStart)
+        {
+            StartCoroutine(animCorou);
+
         }
 
 
@@ -124,4 +140,16 @@ public class MainManager : MonoBehaviour
     {
         comboText.transform.localScale = Vector3.one;
     }
+
+    IEnumerator PushSpaceAnim()
+    {
+        isAnimStart = false;
+        countText.DOPause();
+        countText.transform.DOLocalRotate(new Vector3(0, 0, 720f), 1f, RotateMode.FastBeyond360).WaitForCompletion();
+        countText.DOFade(0.0f, 1.0f).SetLoops(-1, LoopType.Yoyo).Play();
+        yield return new WaitForSeconds(4);
+        isStart = true;
+        yield break;
+    }
+
 }
