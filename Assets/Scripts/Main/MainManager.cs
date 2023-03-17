@@ -36,7 +36,11 @@ public class MainManager : MonoBehaviour
 
     public bool isAnimStart = false;
     IEnumerator animCorou = null;
+    private void Awake()
+    {
+        fade.cutoutRange = 1f;
 
+    }
     public void SetStartTime(float startTime)
     {
         this.startTime = startTime;
@@ -44,6 +48,7 @@ public class MainManager : MonoBehaviour
 
     public void Start()
     {
+        fade.FadeOut(1f);
         animCorou = PushSpaceAnim();
         songName = GameManager.Instance.songName;
         countText.DOFade(0.0f, 1.0f).SetLoops(-1, LoopType.Yoyo).Play();

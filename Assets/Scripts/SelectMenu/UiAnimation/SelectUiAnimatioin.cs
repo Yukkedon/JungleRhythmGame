@@ -30,7 +30,7 @@ public class SelectUiAnimatioin : MonoBehaviour
     /// </summary>
     private void Awake()
     {
-        //fade = GameObject.Find("FadeCanvas");
+        fade.cutoutRange = 1f;
         
         // �e�I�u�W�F�N�g�̏����l�ݒ�
         backGround1.transform.localScale = new Vector3(2f, 2f, 2f);
@@ -50,7 +50,7 @@ public class SelectUiAnimatioin : MonoBehaviour
     /// </summary>
     void Start()
     {
-        fade.FadeOut(1f);
+        
         //fade.GetComponent<Fade>().FadeOut(1f, () => SelectAnimStart());
         SelectAnimStart();
     }
@@ -101,6 +101,8 @@ public class SelectUiAnimatioin : MonoBehaviour
     /// <returns></returns>
     IEnumerator AnimStart()
     {
+        fade.FadeOut(1f);
+        yield return new WaitForSeconds(1f);
         // �w�i�i���񂾂�k���j
         backGround1.transform.DOScale(new Vector3(1, 1, 1), 1f).SetEase(Ease.OutBounce);
         yield return new WaitForSeconds(1f);
