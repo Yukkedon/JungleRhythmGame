@@ -44,7 +44,7 @@ public class HitJudge : MonoBehaviour
 
         UpdatePushingKeyState();
 
-        if (mainManager.isStart)
+        if (GameManager.Instance.isStart)
         {
             if (notesManager.NoteDataAll.Count != 0)
             {

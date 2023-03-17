@@ -1061,6 +1061,7 @@ MonoBehaviour:
   playerScore: 0
   maxScore: 0
   point: 0
+  isAnimStart: 0
 --- !u!4 &544927280
 Transform:
   m_ObjectHideFlags: 0
@@ -3014,6 +3015,7 @@ MonoBehaviour:
   great: 0
   bad: 0
   miss: 0
+  isStart: 0
 --- !u!4 &1712857849
 Transform:
   m_ObjectHideFlags: 0

@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     public int bad = 0;
     public int miss = 0;
 
+    public bool isStart = false;
     private void Awake()
     {
         if (Instance == null)

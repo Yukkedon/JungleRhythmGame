@@ -55,7 +55,8 @@ public class MainManager : MonoBehaviour
 
         if (!isAnimStart && !isStart && Input.GetKeyDown(KeyCode.Space))
         {
-            isStart = true;
+            isAnimStart = true;
+
             //StartCoroutine(PushSpaceAnim());
 /*            countText.DOPause();
             countText.transform.DOLocalRotate(new Vector3(0, 0, 720f), 1f, RotateMode.FastBeyond360);
@@ -63,6 +64,10 @@ public class MainManager : MonoBehaviour
             isStart = true;*/
         }
 
+        if (isAnimStart)
+        {
+            StartCoroutine(PushSpaceAnim());
+        }
 
 
         if (soundMain == null && isStart && isEnd) return;  // AudioSourceÇ™è¡Ç¶ÇΩèÛë‘Ç≈Ç‡éQè∆ÇµÇƒÇµÇ‹Ç§ÇΩÇﬂNullîªíËÇí«â¡
@@ -139,10 +144,12 @@ public class MainManager : MonoBehaviour
     IEnumerator PushSpaceAnim()
     {
         isAnimStart = false;
+        countText.transform.DOScale(new Vector3(10,10,10) ,1);
         countText.DOPause();
         countText.transform.DOLocalRotate(new Vector3(0, 0, 720f), 1f, RotateMode.FastBeyond360).WaitForCompletion();
-        countText.DOFade(0.0f, 1.0f).SetLoops(-1, LoopType.Yoyo).Play();
-        yield return new WaitForSeconds(4);
+        countText.DOFade(0.0f, 1.0f).Play();
+        yield return new  WaitForSeconds(1f);
+        GameManager.Instance.isStart = true;
         isStart = true;
         yield break;
     }
