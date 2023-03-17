@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
+using UnityEngine.EventSystems;//追加
 
 public class SelectManager : MonoBehaviour
 {
@@ -18,7 +19,11 @@ public class SelectManager : MonoBehaviour
     [SerializeField] GameObject panel;
     //[SerializeField] GameObject fade;
     [SerializeField] SoundSelect soundSelect;
-
+    private GameObject button;
+    public List<string> names = new List<string>();
+    [SerializeField] private EventSystem eventSystem;
+    int nowid=-1;
+    int id;
     /// <summary>
     /// �J�n����
     /// 1�񂵂��Ă΂Ȃ�����Awake
@@ -43,6 +48,7 @@ public class SelectManager : MonoBehaviour
     /// </summary>
     private void OnClickCloseButton()
     {
+        nowid = button.GetComponent<Cell>().id;
         // タイトルBGMの再生
         soundSelect.PlaySE((int)SoundSelect.SE.Cansel);
 
@@ -63,8 +69,14 @@ public class SelectManager : MonoBehaviour
     /// </summary>
     public void OnClickSelectMusic()
     {
+        button = eventSystem.currentSelectedGameObject;
+        id = button.GetComponent<Cell>().id;
         // ここでゲームマネージャに値を渡す
-        GameManager.Instance.GetComponent<GameManager>().songName = "GurennoYumiya";
+        GameManager.Instance.GetComponent<GameManager>().songName = names[id];
+        if (id != nowid)
+        {
+            soundSelect.PlayBGM(id);
+        }
         // タイトルBGMの再生
         soundSelect.PlaySE((int)SoundSelect.SE.Select);
 

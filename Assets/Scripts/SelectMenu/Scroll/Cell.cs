@@ -9,7 +9,10 @@ class Cell : FancyCell<MusicItemData>
 {
     [SerializeField] Animator animator = default;
     [SerializeField] CellMusic cellMusic;
-    
+    [SerializeField] Button button;
+    public int id;
+    //public Button _image;
+
     static class AnimatorHash
     {
         public static readonly int Scroll = Animator.StringToHash("scroll");
@@ -20,11 +23,13 @@ class Cell : FancyCell<MusicItemData>
     public override void UpdateContent(MusicItemData itemData)
     {
         cellMusic.PlaySe();
-
+        id = itemData.Id;
         // Ç±Ç±Ç≈ã»ÇêÿÇËë÷Ç¶ÇÈ
-       // cellMusic.PlayBgm();
+        // cellMusic.PlayBgm();
         _txtName.text = itemData.musicName;
+        button.GetComponent<Image>().sprite = itemData.image;
     }
+
 
     public override void UpdatePosition(float position)
     {
