@@ -3071,6 +3071,7 @@ MonoBehaviour:
   great: 0
   bad: 0
   miss: 0
+  isStart: 0
 --- !u!4 &1712857849
 Transform:
   m_ObjectHideFlags: 0

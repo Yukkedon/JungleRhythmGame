@@ -44,7 +44,7 @@ public class HitJudge : MonoBehaviour
 
         UpdatePushingKeyState();
 
-        if (mainManager.isStart)
+        if (GameManager.Instance.isStart)
         {
             if (notesManager.NoteDataAll.Count != 0)
             {
@@ -59,7 +59,6 @@ public class HitJudge : MonoBehaviour
                             {
                                 if (notesManager.NoteDataAll.Count - 1 < noteTiming)
                                 {
-                                    Debug.Log("通常ノーツ終わり");
                                     break;
                                 }
 
@@ -90,7 +89,7 @@ public class HitJudge : MonoBehaviour
                 if (notesManager.NoteDataAll.Count != 0)
                 {
                     // ミス判定
-                    if (Time.time > notesManager.NoteDataAll[notesManager.NoteDataAll.Count - 1].time + MissSecond + mainManager.startTime)
+                    if (Time.time > Time.time + notesManager.NoteDataAll[notesManager.NoteDataAll.Count - 1].time + MissSecond + mainManager.startTime)
                     {
 
                         PopupJudgeMsg(3, notesManager.NoteDataAll.Count - 1);
