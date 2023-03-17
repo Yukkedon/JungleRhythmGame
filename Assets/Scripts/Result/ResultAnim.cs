@@ -28,6 +28,7 @@ public class ResultAnim : MonoBehaviour
     /// </summary>
     private void Awake() 
     {
+        fade.cutoutRange = 1f;
         // 移動するゲームオブジェクトの初期値設定
         scorePanel.transform.localPosition = new Vector3(-260f,-900f,0f);
         resultTextObject.transform.localPosition = new Vector3(1118f,165f,0f);
