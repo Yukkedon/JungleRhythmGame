@@ -55,7 +55,7 @@ public class MainManager : MonoBehaviour
 
         if (!isAnimStart && !isStart && Input.GetKeyDown(KeyCode.Space))
         {
-            isAnimStart = true;
+            isStart = true;
             //StartCoroutine(PushSpaceAnim());
 /*            countText.DOPause();
             countText.transform.DOLocalRotate(new Vector3(0, 0, 720f), 1f, RotateMode.FastBeyond360);
@@ -63,11 +63,6 @@ public class MainManager : MonoBehaviour
             isStart = true;*/
         }
 
-        if (isAnimStart)
-        {
-            StartCoroutine(animCorou);
-
-        }
 
 
         if (soundMain == null && isStart && isEnd) return;  // AudioSource‚ªÁ‚¦‚½ó‘Ô‚Å‚àQÆ‚µ‚Ä‚µ‚Ü‚¤‚½‚ßNull”»’è‚ğ’Ç‰Á
