@@ -14,6 +14,7 @@ public class ScoreTextAnim : MonoBehaviour
     /// </summary>
     private void Start()
     {
+        GameManager.Instance.isStart = false;
         Initialize();
         Play(2.5f);
     }
