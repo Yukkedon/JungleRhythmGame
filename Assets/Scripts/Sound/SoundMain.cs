@@ -20,12 +20,10 @@ public class SoundMain : BaseSound
     // Update is called once per frame
     void Update()
     {
-        
-        if (Input.GetKeyDown(KeyCode.Space) && !mainManager.isStart)
+
+        if (mainManager.isStart && IsCheckEndBGM())
         {
-            mainManager.isStart = true;
             mainManager.SetStartTime(Time.time);
-            
             PlayBGM();
         }
 

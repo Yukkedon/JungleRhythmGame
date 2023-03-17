@@ -4,9 +4,12 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class MainManager : MonoBehaviour
 {
+
+    //[SerializeField] TextMeshPro countText;
 
     [SerializeField] SoundMain soundMain;
     [SerializeField] GameObject comboText;
@@ -14,21 +17,21 @@ public class MainManager : MonoBehaviour
 
     public int MAX_RAITO_POINT = 5;
     public int MAX_DIGIT_POINT = 1000000;
-    public int PERFECT_POINT   = 5;
+    public int PERFECT_POINT = 5;
 
-    public bool isStart      = false;
-    public bool isEnd        = false;
-    public float startTime   = 0;   // スタートボタンを押すまでの秒数を保存
+    public bool isStart = false;
+    public bool isEnd = false;
+    public float startTime = 0;   // スタートボタンを押すまでの秒数を保存
     public float playerScore = 0;
-    public float maxScore    = 0;
+    public float maxScore = 0;
     public int point = 0;
-    
+
     int combo = 0;
 
-    int perfect  = 0;
-    int great    = 0;
-    int bad      = 0;
-    int miss     = 0;
+    int perfect = 0;
+    int great = 0;
+    int bad = 0;
+    int miss = 0;
 
     public void SetStartTime(float startTime)
     {
@@ -38,10 +41,19 @@ public class MainManager : MonoBehaviour
     public void Start()
     {
         songName = GameManager.Instance.songName;
+        //countText.DOFade(1.0f, 0.0f).SetLoops(1, LoopType.Yoyo).Play();
     }
 
     public void Update()
     {
+
+        if (!isStart && Input.GetKeyDown(KeyCode.Space))
+        {
+
+            isStart = true;
+        }
+
+
         if (soundMain == null && isStart && isEnd) return;  // AudioSourceが消えた状態でも参照してしまうためNull判定を追加
         if (soundMain.IsCheckEndBGM() && isStart && isEnd)
         {
@@ -52,12 +64,12 @@ public class MainManager : MonoBehaviour
 
     public void SetGameManagerScore()
     {
-        GameManager.Instance.point  = point;
-        GameManager.Instance.combo  = combo;
-        GameManager.Instance.perfect= perfect;
-        GameManager.Instance.great  = great;
-        GameManager.Instance.bad    = bad;
-        GameManager.Instance.miss   = miss;
+        GameManager.Instance.point = point;
+        GameManager.Instance.combo = combo;
+        GameManager.Instance.perfect = perfect;
+        GameManager.Instance.great = great;
+        GameManager.Instance.bad = bad;
+        GameManager.Instance.miss = miss;
     }
 
     public void ResetCombo()
@@ -79,7 +91,7 @@ public class MainManager : MonoBehaviour
         return point;
     }
 
-    
+
     // 0:perfect 1:great 2:bad 3:miss
     public void AddJudgeCount(int num)
     {
@@ -101,11 +113,6 @@ public class MainManager : MonoBehaviour
                 miss++;
                 break;
         }
-    }
-
-    private void OnDestroy()
-    {
-        
     }
 
     private void ComboAnim()
