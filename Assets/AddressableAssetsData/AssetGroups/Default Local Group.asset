@@ -101,6 +101,10 @@ MonoBehaviour:
     m_Address: Assets/Resource/CutMusic/NameList.json
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: a38ef80d840d7be41a9e83124950e22d
+    m_Address: Assets/Resource/Scores/PokemonMaster.json
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: bcbcf2833f09f534bb8b663127410a9b, type: 2}
   m_SchemaSet:
