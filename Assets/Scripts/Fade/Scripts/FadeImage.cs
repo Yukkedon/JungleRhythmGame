@@ -44,21 +44,11 @@ public class FadeImage : UnityEngine.UI.Graphic , IFade
 		}
 	}
 
-	private void Awake()
-	{
-    	if( instance == null)
-    	{
-      		instance = this;
-      		DontDestroyOnLoad(gameObject);
-    	}
-    	else
-    	{
-      		Destroy(gameObject);
-    	}
-  	}
+
 
 	protected override void Start ()
 	{
+		
 		base.Start ();
 		UpdateMaskTexture (maskTexture);
 	}

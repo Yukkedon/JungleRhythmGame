@@ -8,7 +8,7 @@ using TMPro;
 
 public class MainManager : MonoBehaviour
 {
-
+    [SerializeField] Fade fade;
     [SerializeField] TextMeshProUGUI countText;
 
     [SerializeField] SoundMain soundMain;
@@ -74,7 +74,8 @@ public class MainManager : MonoBehaviour
         if (soundMain.IsCheckEndBGM() && isStart && isEnd)
         {
             SetGameManagerScore();
-            SceneManager.LoadScene("ResultScene");
+            fade.FadeIn(1f, () => SceneManager.LoadScene("ResultScene"));
+            
         }
     }
 

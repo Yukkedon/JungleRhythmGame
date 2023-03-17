@@ -21,7 +21,7 @@ public class ToGameSceneButton : MonoBehaviour
 
     public AudioClip sound1;
     AudioSource audioSource;
-
+    [SerializeField] Fade fade;
     /// <summary>
     /// ‰Šú‰»ˆ—
     /// </summary>
@@ -82,7 +82,8 @@ public class ToGameSceneButton : MonoBehaviour
         // 1•b‘Ò‚Â
         yield return new WaitForSeconds(1f);
         // ƒZƒŒƒNƒg‚Ö
-        SceneManager.LoadScene("SelectScene");
+        fade.FadeIn(1f, () => SceneManager.LoadScene("SelectScene"));
+        
     }
 
     /// <summary>

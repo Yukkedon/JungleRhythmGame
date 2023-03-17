@@ -10,7 +10,7 @@ public class SelectManager : MonoBehaviour
 {
     // �J�ڃ{�^��
     [SerializeField] private GameObject buttonPanel;
-
+    [SerializeField] Fade fade;
     // �{�^���i�[�ϐ�
     [SerializeField] Button yesbutton;
     [SerializeField] Button nobutton;
@@ -96,10 +96,11 @@ public class SelectManager : MonoBehaviour
     {
         // タイトルBGMの再生
         soundSelect.PlaySE((int)SoundSelect.SE.Select);
+        fade.FadeIn(1f, () => SceneManager.LoadScene("MainScene"));
         // �t�F�[�h����
         // �����ɏ���
         //fade.GetComponent<Fade>().FadeIn(1f, () =>SceneManager.LoadScene("MainScene"));
-        SceneManager.LoadScene("MainScene");
+        //SceneManager.LoadScene("MainScene");
     }
 
 }
