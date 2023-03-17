@@ -394,6 +394,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1577822027}
     m_Modifications:
+    - target: {fileID: 3159227062613170724, guid: 1439219e4888f4d459235508e8d431f7, type: 3}
+      propertyPath: spriteImage.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 5e7c9ef0906921e4ba8a6088e58c5ac1, type: 3}
+    - target: {fileID: 3159227062613170724, guid: 1439219e4888f4d459235508e8d431f7, type: 3}
+      propertyPath: spriteImage.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 5e57a07de7132d742801b61b5b6c4af9, type: 3}
     - target: {fileID: 3159227062614235622, guid: 1439219e4888f4d459235508e8d431f7, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -499,6 +507,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1577822027}
     m_Modifications:
+    - target: {fileID: 3159227062613170724, guid: 1439219e4888f4d459235508e8d431f7, type: 3}
+      propertyPath: spriteImage.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 0af075bc35723e7478300098eda5b275, type: 3}
+    - target: {fileID: 3159227062613170724, guid: 1439219e4888f4d459235508e8d431f7, type: 3}
+      propertyPath: spriteImage.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: ef01c5289af42464f9f382bb1c414b63, type: 3}
     - target: {fileID: 3159227062614235622, guid: 1439219e4888f4d459235508e8d431f7, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1049,6 +1065,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundMain: {fileID: 915999591}
+  comboText: {fileID: 0}
   songName: GurennoYumiya
   MAX_RAITO_POINT: 5
   MAX_DIGIT_POINT: 1000000
