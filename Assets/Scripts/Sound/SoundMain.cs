@@ -21,7 +21,7 @@ public class SoundMain : BaseSound
     void Update()
     {
 
-        if (mainManager.isStart && IsCheckEndBGM())
+        if (GameManager.Instance.isStart && IsCheckEndBGM())
         {
             mainManager.SetStartTime(Time.time);
             PlayBGM();

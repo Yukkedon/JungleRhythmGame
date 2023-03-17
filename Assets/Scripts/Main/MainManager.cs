@@ -149,6 +149,7 @@ public class MainManager : MonoBehaviour
         countText.DOPause();
         countText.transform.DOLocalRotate(new Vector3(0, 0, 720f), 1f, RotateMode.FastBeyond360).WaitForCompletion();
         countText.DOFade(0.0f, 1.0f).Play();
+        
         yield return new  WaitForSeconds(1f);
         GameManager.Instance.isStart = true;
         isStart = true;
