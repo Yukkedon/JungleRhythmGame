@@ -21,9 +21,8 @@ public class ResultAnim : MonoBehaviour
     // ボタン
     [SerializeField] private GameObject buttons;
 
-    public AudioClip sound1;
-    public AudioClip sound2;
-
+    [SerializeField] Fade fade;
+    
     /// <summary>
     /// 開始処理（Startより前に実行）
     /// </summary>
@@ -59,6 +58,7 @@ public class ResultAnim : MonoBehaviour
     /// <returns></returns>
     IEnumerator AnimStart()
     {
+        fade.FadeOut(1f);
         backGround1.transform.DOScale(new Vector3(1f,1f,1f),1f).SetEase(Ease.OutBounce);
         yield return new WaitForSeconds(1f);//1秒待つ
         backGround2.transform.DOScale(new Vector3(1f,1f,1f),1f).SetEase(Ease.OutBounce); 

@@ -6,6 +6,7 @@ using TMPro;
 
 public class SelectUiAnimatioin : MonoBehaviour
 {
+    [SerializeField] Fade fade;
     // �A�j���[�V����������e�L�X�g
     [SerializeField] TextMeshProUGUI gorillaDialogue = default;
 
@@ -49,6 +50,7 @@ public class SelectUiAnimatioin : MonoBehaviour
     /// </summary>
     void Start()
     {
+        fade.FadeOut(1f);
         //fade.GetComponent<Fade>().FadeOut(1f, () => SelectAnimStart());
         SelectAnimStart();
     }

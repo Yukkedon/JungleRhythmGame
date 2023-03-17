@@ -16,6 +16,7 @@ public class DialogManager : MonoBehaviour
     public AudioClip sound1;
     public AudioClip sound2;
     AudioSource audioSource;
+    [SerializeField] Fade fade;
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
@@ -68,13 +69,14 @@ public class DialogManager : MonoBehaviour
     public void OnClickYesButton()
     {
         audioSource.PlayOneShot(sound1);
-        SceneManager.LoadScene("MainScene");
+        fade.FadeIn(1f, () => SceneManager.LoadScene("MainScene"));
+        
     }
 
     public void OnClickSerectYesButton()
     {
         audioSource.PlayOneShot(sound1);
-        SceneManager.LoadScene("SelectScene");
+        fade.FadeIn(1f, () => SceneManager.LoadScene("SelectScene"));
     }
 
 }

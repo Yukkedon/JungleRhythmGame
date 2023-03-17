@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.21309775, g: 0.056913484, b: 0.03364023, a: 1}
+  m_IndirectSpecularColor: {r: 0.39381152, g: 0.46550357, b: 0.5781445, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2310,7 +2310,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textMeshPro: {fileID: 1252105148}
-  isbool: 0
 --- !u!1 &1264620082 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3159227062614235623, guid: 1439219e4888f4d459235508e8d431f7, type: 3}
@@ -3382,8 +3381,7 @@ MonoBehaviour:
   prefectText: {fileID: 1252105146}
   resultText: {fileID: 894718919}
   buttons: {fileID: 2142063667}
-  sound1: {fileID: 8300000, guid: 493f3644ef951154e80303bf2b7956e5, type: 3}
-  sound2: {fileID: 8300000, guid: 053d6c2133d7f71468cccc3ee5b30f89, type: 3}
+  fade: {fileID: 1388413675}
 --- !u!224 &337784138173594919
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5309,6 +5307,7 @@ MonoBehaviour:
   panel: {fileID: 1077923210}
   sound1: {fileID: 8300000, guid: 493f3644ef951154e80303bf2b7956e5, type: 3}
   sound2: {fileID: 8300000, guid: 053d6c2133d7f71468cccc3ee5b30f89, type: 3}
+  fade: {fileID: 1388413675}
 --- !u!82 &8193454732280650665
 AudioSource:
   m_ObjectHideFlags: 0
