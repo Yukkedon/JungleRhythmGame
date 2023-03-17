@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 145}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5491773251940673243
@@ -128,7 +128,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -124.42557, y: 71.977905, z: -123.97162, w: 73.67505}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -287,6 +287,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 94615918929035406}
   cellMusic: {fileID: 5642196809739230576}
+  button: {fileID: 5491773252348672271}
+  id: 0
   _txtName: {fileID: 5491773251940673244}
 --- !u!95 &94615918929035406
 Animator:
@@ -327,6 +329,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e0d7f9ef756820f4bbbeaa3a206e1336, type: 3}
   jsonKey: []
   scrollview: {fileID: 0}
+  soundSelect: {fileID: 0}
+  images: []
   buttonText: {fileID: 5491773251940673244}
 --- !u!82 &5296391741434860542
 AudioSource:

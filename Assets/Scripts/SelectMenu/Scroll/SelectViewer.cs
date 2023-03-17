@@ -20,6 +20,8 @@ public class SelectViewer : BaseSound
 
     [SerializeField] SoundSelect soundSelect;
 
+    [SerializeField] Sprite[] images;
+
     private void Awake()
     {
         Load();
@@ -67,7 +69,7 @@ public class SelectViewer : BaseSound
     {
         yield return new WaitForSeconds(2f);
         var items = Enumerable.Range(0, jsonKey.Count).
-          Select(i => new MusicItemData(jsonKey.Count, jsonKey[i])).ToArray();
+          Select(i => new MusicItemData(i, jsonKey[i], images[i])).ToArray();
         scrollview.UpdateData(items);
     }
 

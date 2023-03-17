@@ -11,11 +11,14 @@ class MusicItemData
     // 曲名
     public string musicName;
 
+    public Sprite image;
+
     // コンストラクタ
-    public MusicItemData(int id ,string musicName)
+    public MusicItemData(int id ,string musicName,Sprite image)
     {
         this.Id = id;
         this.musicName = musicName;
+        this.image = image;
     }
 }
 
