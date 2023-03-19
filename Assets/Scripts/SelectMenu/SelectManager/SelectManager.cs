@@ -22,7 +22,7 @@ public class SelectManager : MonoBehaviour
     private GameObject button;
     public List<string> names = new List<string>();
     [SerializeField] private EventSystem eventSystem;
-    int nowid=-1;
+    int nowid = -1;
     int id;
     /// <summary>
     /// �J�n����
@@ -57,7 +57,7 @@ public class SelectManager : MonoBehaviour
         buttonPanel.transform.DOScale(Vector3.zero, 0.2f);
 
         // �X�P�[����0�ɂȂ������\���ɂ���
-        if(buttonPanel.transform.localScale== Vector3.zero)
+        if (buttonPanel.transform.localScale == Vector3.zero)
         {
             buttonPanel.gameObject.SetActive(false);
         }
@@ -70,13 +70,10 @@ public class SelectManager : MonoBehaviour
     public void OnClickSelectMusic()
     {
         button = eventSystem.currentSelectedGameObject;
-        id = button.GetComponent<Cell>().id;
+
         // ここでゲームマネージャに値を渡す
         GameManager.Instance.GetComponent<GameManager>().songName = names[id];
-        if (id != nowid)
-        {
-            soundSelect.PlayBGM(id);
-        }
+
         // タイトルBGMの再生
         soundSelect.PlaySE((int)SoundSelect.SE.Select);
 
@@ -101,6 +98,19 @@ public class SelectManager : MonoBehaviour
         // �����ɏ���
         //fade.GetComponent<Fade>().FadeIn(1f, () =>SceneManager.LoadScene("MainScene"));
         //SceneManager.LoadScene("MainScene");
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        id = collision.gameObject.GetComponent<Cell>().id;
+        if (collision.gameObject.tag == "button")
+        {
+
+            if (id != nowid)
+            {
+                soundSelect.PlayBGM(id);
+            }
+        }
     }
 
 }
